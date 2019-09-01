@@ -14,6 +14,7 @@ public class Form1 : System.Windows.Forms.Form
     private Button deleteRowButton = new Button();
 
 
+
     public Form1()
     {
         this.Load += new EventHandler(Form1_Load);
@@ -105,7 +106,15 @@ public class Form1 : System.Windows.Forms.Form
         songsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
         songsDataGridView.AllowUserToResizeRows = false;
         songsDataGridView.AllowUserToAddRows = false;
+        songsDataGridView.RowHeadersVisible = false;
+        songsDataGridView.ColumnHeadersVisible = false;
+        //Making columns not sortable
 
+        for ( var i = 0; i < 9; i++)
+        {
+            songsDataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+       
 
         songsDataGridView.SelectionMode =
             DataGridViewSelectionMode.FullRowSelect;
@@ -129,15 +138,34 @@ public class Form1 : System.Windows.Forms.Form
 
 
         int[] numbersArray = { 7, 3, 5, 6, 1, 4, 8, 9, 2, 8, 4, 2, 9, 7, 3, 5, 6, 1, 9, 6, 1, 2, 8, 5, 3, 7, 4, 2, 8, 6, 3, 4, 9, 1, 5, 7, 4, 1, 3, 8, 5, 7, 9, 2, 6, 5, 7, 9, 1, 2, 6, 4, 3, 8, 1, 5, 7, 4, 9, 2, 6, 8, 3, 6, 9, 4, 7, 3, 8, 2, 1, 5, 3, 2, 8, 5, 6, 1, 7, 4, 9 };
-        
-        
 
-        string[] row0 = { "1", "2", "3", "4", "5", "6", "7", "8", "9", };
+        int splitSize = numbersArray.Length / gridHeight;
+        int[,] splitArray = new int[gridHeight, splitSize];
+        int currentIndex = 0;
+
+        for (var i = 0; i < gridHeight; i++)
+        {
+            int[] currentArray = new int[splitSize];
+            for (var x = 0; x < splitSize; x++)
+            {
+                currentArray[x] = numbersArray[currentIndex];
+                currentIndex++;
+            }
+            for ( var a = 0; a < splitSize; a++ )
+            {
+                splitArray[i, a] = currentArray[a];
+            }
+        }
 
 
         for (var i = 0; i < gridHeight; i++)
         {
-            songsDataGridView.Rows.Add(row0);
+            string[] row = new string[splitSize];
+            for (var x = 0; x < splitSize; x++)
+            {
+                row[x] = splitArray[i, x].ToString();
+            } 
+            songsDataGridView.Rows.Add(row);
         }
 
 
