@@ -10,6 +10,8 @@ namespace Sudoku
     {
         protected int squareWidth;
         protected int squareHeight;
+        protected int gridWidth;
+        protected int gridHeight;
         protected int max;
         public int[] numbersArray;
 
@@ -17,6 +19,7 @@ namespace Sudoku
         {
             SetSquareHeight(squareWidth);
             SetSquareWidth(squareHeight);
+            gridHeight = gridWidth = squareHeight * squareWidth;
             numbersArray = new int[(squareWidth * squareWidth) * (squareHeight * squareHeight)];
             ShowIndexes();
         }
