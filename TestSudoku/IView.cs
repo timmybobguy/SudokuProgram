@@ -11,7 +11,5 @@ namespace Sudoku
         void Start();
         void Stop();
         void Show<T>(T Prompt);
-        string MakeSquare(int number);
-        string MakeLine(int n);
     }
 }

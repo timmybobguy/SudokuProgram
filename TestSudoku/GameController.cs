@@ -22,7 +22,9 @@ namespace Sudoku
         public void Go()
         {
             view.Start();
-            view.Show(game.ToPrettyString(view));
+            game.ToCSV();
+            game.FromCSV("sudokuGame1");
+            view.Show(game.ToPrettyString());
             view.Show(validator.IsPuzzleValid());
             view.Stop();
         }

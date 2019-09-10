@@ -10,6 +10,6 @@ namespace Sudoku
         string ToCSV();
         void SetCell(int value, int gridIndex);
         int GetCell(int gridIndex);
-        string ToPrettyString(IView view);
+        string ToPrettyString();
     }
 }

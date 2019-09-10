@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    class Game : IGame, ISet, IGet, ISerialize
+    partial class Game : IGame, ISet, IGet
     {
         protected int squareWidth;
         protected int squareHeight;
@@ -112,70 +112,6 @@ namespace Sudoku
             numbersArray[GetBySquare(squareIndex, positionIndex)] = value;
         }
 
-        public void FromCSV(string csv)
-        {
-            int[] arrayOfNumbers = new int[numbersArray.Length];
-            string stringNumbers = System.IO.File.ReadAllText(@"..\..\..\..\Export\" + csv + ".csv");
-            string[] arrayOfStrings = stringNumbers.Split(',');
-            for (int i = 0; i < arrayOfStrings.Length; i++)
-            {
-                bool success = Int32.TryParse(arrayOfStrings[i].ToString(), out int number);
-                if (success)
-                {
-                    Console.WriteLine("square " + i + "set to: " + number);
-                    numbersArray[i] = number;
-                }
-                else
-                {
-                    Console.WriteLine("Error setting square " + i + "set to: " + 0);
-                    Console.WriteLine(arrayOfStrings[i].ToString());
-                    numbersArray[i] = 0;
-                }
-
-            }
-        }
-
-        public string ToCSV()
-        {
-            string[] stringArray = new string[numbersArray.Length];
-            for (int i = 0; i < numbersArray.Length; i++)
-            {
-                stringArray[i] = numbersArray[i].ToString();
-            }
-
-            System.IO.File.WriteAllLines(@"..\..\..\..\Export\Numbers.csv", stringArray);
-            return String.Join(",", stringArray);
-
-        }
-
-        public void SetCell(int value, int gridIndex)
-        {
-            numbersArray[gridIndex] = value;
-        }
-
-        public int GetCell(int gridIndex)
-        {
-            return numbersArray[gridIndex];
-        }
-
-        public string ToPrettyString(IView view)
-        {
-            string line = view.MakeLine(squareWidth) + "\n";
-            for (int i = 0; i < numbersArray.Length; i++)
-            {
-                if (i % squareWidth == 0)
-                {
-                    line += "|";
-                }
-                if (i % ((squareWidth * squareWidth) * squareHeight) == 0 && i != 0)
-                {
-                    line += "\n" + view.MakeLine(squareWidth);
-                }
-                bool endOfLine = i % (squareWidth * squareWidth) == 0 && i != 0;
-                line += endOfLine ? "\n|" + view.MakeSquare(numbersArray[i]) : view.MakeSquare(numbersArray[i]);
-            }
-            return line + "|\n" + view.MakeLine(squareWidth);
-        }
 
         public bool RowValid(int rowNumber)
         {
