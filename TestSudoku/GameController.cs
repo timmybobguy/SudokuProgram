@@ -10,13 +10,11 @@ namespace Sudoku
     {
         protected IView view;
         protected Game game;
-        protected Validator validator;
 
-        public GameController(IView theView, Game theGame, Validator theValidator)
+        public GameController(IView theView, Game theGame)
         {
             view = theView;
             game = theGame;
-            validator = theValidator;
         }
 
         public void Go()
@@ -25,7 +23,7 @@ namespace Sudoku
             game.ToCSV();
             game.FromCSV("sudokuGame1");
             view.Show(game.ToPrettyString());
-            view.Show(validator.IsPuzzleValid());
+            view.Show(game.IsPuzzleValid());
             view.Stop();
         }
     }

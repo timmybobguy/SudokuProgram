@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    class Validator : Game
-    {
-        private int gridLength;
-        public Validator(int squareWidth, int squareHeight) : base(squareWidth, squareHeight)
-        {
-            gridLength = squareWidth * squareHeight;
-        }
-
+    partial class Game
+    { 
         public bool IsPuzzleValid()
         {
             for (int i = 0; i < gridLength; i++)
@@ -32,6 +26,60 @@ namespace Sudoku
                 }
             }
             return true;
+        }
+
+        public int[] GetValidValues(int index)
+        {
+            int maxSize = squareHeight * squareWidth;
+            int[] possibleValues = new int[maxSize];
+
+            for (var i = 0; i < maxSize; i++)
+            {
+                possibleValues[i] = (i + 1);
+            }
+            int col = GetColumnByIndex(index);
+            int row = GetRowByIndex(index);
+            int square = GetSquareFromIndex(col, row);
+            int amountRemoved = 0;
+            for (var i = 0; i < gridHeight; i++)
+            {
+                if (numbersArray[GetByColumn(col, i)] != 0)
+                {
+                    if (possibleValues.Contains(numbersArray[GetByColumn(col, i)]))
+                    {
+                        possibleValues[numbersArray[GetByColumn(col, i)] - 1] = 0;
+                        amountRemoved++;
+                        continue;
+                    }
+
+                    if (possibleValues.Contains(numbersArray[GetByRow(row, i)]))
+                    {
+                        possibleValues[numbersArray[GetByRow(row, i)] - 1] = 0;
+                        amountRemoved++;
+                        continue;
+                    }
+                    if (possibleValues.Contains(numbersArray[GetBySquare(square, i)]))
+                    {
+                        possibleValues[numbersArray[GetBySquare(square, i)] - 1] = 0;
+                        amountRemoved++;
+                        continue;
+                    }
+                }
+            }
+            Array.Sort(possibleValues);
+            Array.Reverse(possibleValues);
+            int endLength = possibleValues.Length - amountRemoved;
+            int[] returnedValues = new int[endLength];
+            for (int i = 0; i < endLength; i++)
+            {
+                if (possibleValues[i] != 0)
+                {
+                    returnedValues[i] = possibleValues[i];
+                }
+
+            }
+            Array.Sort(returnedValues);
+            return returnedValues;
         }
 
         private bool RowValid(int rowNumber)

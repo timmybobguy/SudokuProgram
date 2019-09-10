@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    partial class Game : IGame, ISet, IGet
+    partial class Game : IGame, IGet
     {
         protected int squareWidth;
         protected int squareHeight;
         protected int gridWidth;
         protected int gridHeight;
+        protected int gridLength;
         protected int max;
         public int[] numbersArray;
 
@@ -20,16 +21,8 @@ namespace Sudoku
             SetSquareHeight(squareWidth);
             SetSquareWidth(squareHeight);
             gridHeight = gridWidth = squareHeight * squareWidth;
-            numbersArray = new int[(squareWidth * squareWidth) * (squareHeight * squareHeight)];
-            ShowIndexes();
-        }
-
-        public void ShowIndexes()
-        {
-            for (int i = 0; i < ((squareWidth * squareWidth) * (squareHeight * squareHeight)); i++)
-            {
-                numbersArray[i] = i;
-            }
+            gridLength = gridHeight * gridWidth;
+            numbersArray = new int[gridLength];
         }
 
         public void SetMaxValue(int maximum)
@@ -67,192 +60,5 @@ namespace Sudoku
 
         }
 
-        public int GetByColumn(int columnIndex, int rowIndex)
-        {
-            int index = Convert.ToInt32((rowIndex * Math.Sqrt(gridWidth * gridHeight)) + columnIndex);
-
-            return index;
-        }
-
-        public int GetByRow(int rowIndex, int columnIndex)
-        {
-            int index = Convert.ToInt32((rowIndex * Math.Sqrt(gridWidth * gridHeight)) + columnIndex);
-
-            return index;
-        }
-
-        public int GetBySquare(int squareIndex, int positionIndex)
-        {
-            int index = 0;
-            for (int i = 1; i <= squareIndex; i++)
-            {
-                bool isEndOfLine = i % (gridWidth / squareWidth) == 0;
-                index += isEndOfLine ? (gridWidth * (squareHeight - 1)) + squareWidth : squareWidth;
-            }
-            for (int i = 1; i <= positionIndex; i++)
-            {
-                bool isEndOfLine = i % squareWidth == 0 && positionIndex != 0;
-                index += isEndOfLine ? ((gridWidth - squareWidth) + 1) : 1;
-            }
-            return index;
-        }
-
-        public void SetByColumn(int value, int columnIndex, int rowIndex)
-        {
-            numbersArray[GetByColumn(columnIndex, rowIndex)] = value;
-        }
-
-        public void SetByRow(int value, int rowIndex, int columnIndex)
-        {
-            numbersArray[GetByRow(rowIndex, columnIndex)] = value;
-        }
-
-        public void SetBySquare(int value, int squareIndex, int positionIndex)
-        {
-            numbersArray[GetBySquare(squareIndex, positionIndex)] = value;
-        }
-
-
-        public bool RowValid(int rowNumber)
-        {
-            int[] newArray = new int[gridWidth];
-            for (int i = 0; i < gridWidth; i++)
-            {
-                int number = numbersArray[GetByRow(rowNumber, i)];
-                if (number == 0 || newArray.Contains(number))
-                {
-                    return false;
-                }
-                newArray[i] = number;
-
-            }
-            return true;
-        }
-
-        public bool ColumnValid(int columnNumber)
-        {
-            int[] newArray = new int[gridHeight];
-            for (int i = 0; i < gridHeight; i++)
-            {
-                int number = numbersArray[GetByColumn(columnNumber, i)];
-                if (number == 0 || newArray.Contains(number))
-                {
-                    return false;
-                }
-                newArray[i] = number;
-
-            }
-            return true;
-        }
-
-        public bool SquareValid(int squareNumber)
-        {
-            int Boxes = squareWidth * squareHeight;
-            int[] newArray = new int[Boxes];
-            for (int i = 0; i < Boxes; i++)
-            {
-                int number = numbersArray[GetBySquare(squareNumber, i)];
-                if (number == 0 || newArray.Contains(number))
-                {
-                    return false;
-                }
-                newArray[i] = number;
-
-            }
-            return true;
-        }
-
-
-        public bool isPuzzleValid()
-        {
-            for (int i = 0; i < gridHeight; i++)
-            {
-                if (!ColumnValid(i))
-                {
-                    return false;
-                }
-                if (!RowValid(i))
-                {
-                    return false;
-                }
-                if (!SquareValid(i))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        public int[] GetValidValues(int index)
-        {
-            int maxSize = squareHeight * squareWidth;
-            int[] possibleValues = new int[maxSize];
-
-            for (var i = 0; i < maxSize; i++)
-            {
-                possibleValues[i] = (i + 1);
-            }
-            int col = GetColumnByIndex(index);
-            int row = GetRowByIndex(index);
-            int square = GetSquareFromIndex(col, row);
-            int amountRemoved = 0;
-            for (var i = 0; i < gridHeight; i++)
-            {
-                if (numbersArray[GetByColumn(col, i)] != 0)
-                {
-                    if (possibleValues.Contains(numbersArray[GetByColumn(col, i)]))
-                    {
-                        possibleValues[numbersArray[GetByColumn(col, i)] - 1] = 0;
-                        amountRemoved++;
-                        continue;
-                    }
-
-                    if (possibleValues.Contains(numbersArray[GetByRow(row, i)]))
-                    {
-                        possibleValues[numbersArray[GetByRow(row, i)] - 1] = 0;
-                        amountRemoved++;
-                        continue;
-                    }
-                    if (possibleValues.Contains(numbersArray[GetBySquare(square, i)]))
-                    {
-                        possibleValues[numbersArray[GetBySquare(square, i)] - 1] = 0;
-                        amountRemoved++;
-                        continue;
-                    }
-                }
-            }
-            Array.Sort(possibleValues);
-            Array.Reverse(possibleValues);
-            int endLength = possibleValues.Length - amountRemoved;
-            int[] returnedValues = new int[endLength];
-            for (int i = 0; i < endLength; i++)
-            {
-                if (possibleValues[i] != 0)
-                {
-                    returnedValues[i] = possibleValues[i];
-                }
-
-            }
-            Array.Sort(returnedValues);
-            return returnedValues;
-        }
-
-        public int GetRowByIndex(int index)
-        {
-            return index / gridWidth;
-        }
-
-        public int GetColumnByIndex(int index)
-        {
-            return index % gridWidth;
-        }
-
-        public int GetSquareFromIndex(int col, int row)
-        {
-            int squareCol = (col) / squareWidth;
-            int squareRow = (row) / squareHeight;
-            int square = squareRow * squareWidth + squareCol;
-            return square;
-        }
     }
 }
