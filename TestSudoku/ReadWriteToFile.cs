@@ -11,7 +11,7 @@ namespace Sudoku
     {
         public void FromCSV(string csv)
         {
-            string csvText = System.IO.File.ReadAllText(@"..\..\..\..\Export\" + csv + ".csv");
+            string csvText = System.IO.File.ReadAllText(@"..\..\..\Export\" + csv + ".csv");
             int[] numbers = ToNumberList(csvText);
             for( int i = 0; i< numbers.Length; i++ )
             {
@@ -28,7 +28,7 @@ namespace Sudoku
         public string ToCSV()
         {
             string csvString = ToCSVString();
-            System.IO.File.WriteAllText(@"..\..\..\..\Export\Numbers.csv", csvString);
+            System.IO.File.WriteAllText(@"..\..\..\Export\Numbers.csv", csvString);
             return csvString;
         }
 
