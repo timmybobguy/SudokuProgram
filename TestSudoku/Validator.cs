@@ -30,56 +30,52 @@ namespace Sudoku
 
         public int[] GetValidValues(int index)
         {
-            int maxSize = squareHeight * squareWidth;
-            int[] possibleValues = new int[maxSize];
-
-            for (var i = 0; i < maxSize; i++)
+            string result = string.Empty;
+            int[] possibleValues = new int[gridWidth];
+            for (var i = 0; i < gridWidth; i++)
             {
                 possibleValues[i] = (i + 1);
             }
             int col = GetColumnByIndex(index);
             int row = GetRowByIndex(index);
-            int square = GetSquareFromIndex(col, row);
-            int amountRemoved = 0;
+            int square = GetSquareFromIndex(index);
             for (var i = 0; i < gridHeight; i++)
             {
-                if (numbersArray[GetByColumn(col, i)] != 0)
+                int colVal = numbersArray[GetByColumn(col, i)];
+                if(colVal != 0)
                 {
-                    if (possibleValues.Contains(numbersArray[GetByColumn(col, i)]))
+                    if (possibleValues.Contains(colVal))
                     {
-                        possibleValues[numbersArray[GetByColumn(col, i)] - 1] = 0;
-                        amountRemoved++;
-                        continue;
+                        possibleValues[colVal - 1] = 0;
                     }
-
-                    if (possibleValues.Contains(numbersArray[GetByRow(row, i)]))
+                }
+                int rowVal = numbersArray[GetByRow(row, i)];
+                if(rowVal != 0)
+                {
+                    if (possibleValues.Contains(rowVal))
                     {
-                        possibleValues[numbersArray[GetByRow(row, i)] - 1] = 0;
-                        amountRemoved++;
-                        continue;
+                        possibleValues[rowVal - 1] = 0;
                     }
-                    if (possibleValues.Contains(numbersArray[GetBySquare(square, i)]))
+                }
+                int squareVal = numbersArray[GetBySquare(square, i)];
+                if(squareVal != 0)
+                {
+                    if (possibleValues.Contains(squareVal))
                     {
-                        possibleValues[numbersArray[GetBySquare(square, i)] - 1] = 0;
-                        amountRemoved++;
-                        continue;
+                        possibleValues[squareVal - 1] = 0;
                     }
                 }
             }
-            Array.Sort(possibleValues);
-            Array.Reverse(possibleValues);
-            int endLength = possibleValues.Length - amountRemoved;
-            int[] returnedValues = new int[endLength];
-            for (int i = 0; i < endLength; i++)
+            foreach (int val in possibleValues)
             {
-                if (possibleValues[i] != 0)
+                if (val != 0)
                 {
-                    returnedValues[i] = possibleValues[i];
+                    result += val.ToString() + ",";
                 }
-
             }
-            Array.Sort(returnedValues);
-            return returnedValues;
+            int[] validValues = Array.ConvertAll(result.TrimEnd(',').Split(','), int.Parse);
+            Array.Sort(validValues);
+            return validValues;
         }
 
         private bool RowValid(int rowNumber)

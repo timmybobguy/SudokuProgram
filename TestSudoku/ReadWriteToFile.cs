@@ -12,22 +12,17 @@ namespace Sudoku
         public void FromCSV(string csv)
         {
             string csvText = System.IO.File.ReadAllText(@"..\..\..\..\Export\" + csv + ".csv");
-            Dictionary<int, int> numbers = ToNumberList(csvText);
-            for( int i = 0; i< numbers.Count; i++ )
+            int[] numbers = ToNumberList(csvText);
+            for( int i = 0; i< numbers.Length; i++ )
             {
                 SetCell(numbers[i], i);
             }
         }
 
-        public Dictionary<int, int> ToNumberList(string csvString)
+        public int[] ToNumberList(string csvString)
         {
-            var numbers = new Dictionary<int, int>();
-            string[] arrayOfStrings = Regex.Replace(csvString, @"\t|\r\n", ",").Split(',');
-            for (int i = 0; i < numbersArray.Length; i++)
-            {
-                numbers.Add(i,Int32.Parse(arrayOfStrings[i]));
-            }
-            return numbers;
+            string[] arrayOfStrings = Regex.Replace(csvString.TrimEnd('\r', '\n'), @"\t|\r\n", ",").Split(',');
+            return Array.ConvertAll(arrayOfStrings, int.Parse);
         }
 
         public string ToCSV()

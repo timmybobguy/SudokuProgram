@@ -48,10 +48,10 @@ namespace Sudoku
             return index % gridWidth;
         }
 
-        public int GetSquareFromIndex(int col, int row)
-        {
-            int squareCol = (col) / squareWidth;
-            int squareRow = (row) / squareHeight;
+        public int GetSquareFromIndex(int index)
+        { 
+            int squareCol = (GetColumnByIndex(index)) / squareWidth;
+            int squareRow = (GetRowByIndex(index)) / squareHeight;
             int square = squareRow * squareWidth + squareCol;
             return square;
         }
