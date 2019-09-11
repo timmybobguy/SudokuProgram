@@ -16,6 +16,7 @@ namespace Sudoku
         protected int max;
         protected int numberOfSquares;
         public int[] numbersArray;
+        public int[] originalNumbersArray;
 
         public Game(int squareWidth, int squareHeight)
         {
@@ -25,6 +26,7 @@ namespace Sudoku
             gridLength = gridHeight * gridWidth;
             numberOfSquares = gridLength / (squareWidth * squareHeight);
             numbersArray = new int[gridLength];
+            originalNumbersArray = new int[gridLength];
         }
 
         public void SetMaxValue(int maximum)
@@ -59,7 +61,7 @@ namespace Sudoku
 
         public void Restart()
         {
-
+            numbersArray = originalNumbersArray;
         }
 
     }

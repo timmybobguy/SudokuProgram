@@ -16,6 +16,7 @@ namespace Sudoku
             for( int i = 0; i< numbers.Length; i++ )
             {
                 SetCell(numbers[i], i);
+                originalNumbersArray[i] = numbers[i];
             }
         }
 
