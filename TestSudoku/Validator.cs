@@ -10,7 +10,7 @@ namespace Sudoku
     { 
         public bool IsPuzzleValid()
         {
-            for (int i = 0; i < gridLength; i++)
+            for (int i = 0; i < gridHeight; i++)
             {
                 if (!ColumnValid(i))
                 {
@@ -81,7 +81,7 @@ namespace Sudoku
         private bool RowValid(int rowNumber)
         {
             int[] newArray = new int[gridLength];
-            for (int i = 0; i < gridLength; i++)
+            for (int i = 1; i < gridWidth; i++)
             {
                 int number = numbersArray[GetByRow(rowNumber, i)];
                 if (number == 0 || newArray.Contains(number))
@@ -96,7 +96,7 @@ namespace Sudoku
         private bool ColumnValid(int columnNumber)
         {
             int[] newArray = new int[gridLength];
-            for (int i = 0; i < gridLength; i++)
+            for (int i = 1; i < gridHeight; i++)
             {
                 int number = numbersArray[GetByColumn(columnNumber, i)];
                 if (number == 0 || newArray.Contains(number))
