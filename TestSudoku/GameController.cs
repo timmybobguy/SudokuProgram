@@ -21,8 +21,11 @@ namespace Sudoku
         {
             view.Start();
             game.ToCSV();
-            game.FromCSV("sudokuGame1");
-            view.Show(String.Join(",", game.GetValidValues(2)));
+            //game.FromCSV("sudokuGame1");
+            //Loading a valid puzzle for testing
+            game.FromCSV("valid3x3sudoku");
+            //Cannot get valid values because puzzle is complete
+            //view.Show(String.Join(",", game.GetValidValues(2)));
             view.Show(game.ToPrettyString());
             view.Show(game.IsPuzzleValid());
             view.Stop();

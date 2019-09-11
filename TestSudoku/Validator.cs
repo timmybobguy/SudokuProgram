@@ -125,5 +125,17 @@ namespace Sudoku
             }
             return true;
         }
+
+        private bool CellValid(int index)
+        {
+            if (SquareValid(GetSquareFromIndex(index)) && (RowValid(GetRowByIndex(index))) && (ColumnValid(GetColumnByIndex(index))))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
