@@ -27,6 +27,27 @@ namespace Sudoku
             }
             return true;
         }
+        
+        public int NumberOfIncorrectSquares()
+        {
+            int numberIncorrect = 0;
+            int numberOfSquares = gridLength / (squareWidth * squareHeight);
+            for (int i = 0; i < numberOfSquares; i++)
+            {
+                if (!SquareValid(i))
+                {
+                    int[] squareValues = new int[gridHeight];
+                    for (int x = 0; x < (gridHeight); x++)
+                    {
+                        squareValues[x] = numbersArray[GetBySquare(i, x)];
+                    }
+                    int diff = squareValues.Length;
+                    squareValues = new HashSet<int>(squareValues).ToArray();
+                    numberIncorrect += diff - squareValues.Length;
+                }
+            }
+            return numberIncorrect;
+        }
 
         public int[] GetValidValues(int index)
         {
@@ -72,6 +93,10 @@ namespace Sudoku
                 {
                     result += val.ToString() + ",";
                 }
+            }
+            if (result == "") // This is if it finds no valid values, may need to be changed to empty array not sure
+            {
+                return null;
             }
             int[] validValues = Array.ConvertAll(result.TrimEnd(',').Split(','), int.Parse);
             Array.Sort(validValues);
