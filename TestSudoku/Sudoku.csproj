@@ -46,6 +46,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameController.cs" />
     <Compile Include="Get.cs" />
+    <Compile Include="Hint.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="IGet.cs" />
     <Compile Include="ReadWriteToFile.cs" />

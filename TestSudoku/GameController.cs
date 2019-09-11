@@ -24,6 +24,9 @@ namespace Sudoku
 
             game.FromCSV("sudokuGame1");
 
+            //Testing hints
+            //Array.ForEach(game.GetHint(), Console.WriteLine);
+
             //Testing is puzzle valid for saving method
             view.Show(game.IsPuzzleValidForSaving());
 
