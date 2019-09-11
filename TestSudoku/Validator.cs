@@ -28,7 +28,7 @@ namespace Sudoku
             return true;
         }
         
-        public bool IsPuzzleValidForSaving()
+        public bool IsPuzzleValidForSaving() //Pretty much the same as is puzzle valid but it is ignoring 0's. For use in the puzzle editor
         {
             for (int i = 0; i < numbersArray.Length; i++)
             {
