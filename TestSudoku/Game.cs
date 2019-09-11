@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    partial class Game : IGame, IGet
+    partial class Game : IGame
     {
         protected int squareWidth;
         protected int squareHeight;
