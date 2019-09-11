@@ -24,7 +24,7 @@ namespace Sudoku
             SetSquareWidth(squareHeight);
             gridHeight = gridWidth = squareHeight * squareWidth;
             gridLength = gridHeight * gridWidth;
-            numberOfSquares = gridLength / (squareWidth * squareHeight);
+            numberOfSquares = gridHeight;
             numbersArray = new int[gridLength];
             originalNumbersArray = new int[gridLength];
         }
