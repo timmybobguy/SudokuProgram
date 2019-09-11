@@ -28,13 +28,62 @@ namespace Sudoku
             return true;
         }
         
+        public bool IsPuzzleValidForSaving()
+        {
+            for (int i = 0; i < numbersArray.Length; i++)
+            {
+                List<int> rowNums = new List<int>();
+                for (int a = 0; a < gridHeight; a++)
+                {
+                    if (numbersArray[GetByRow(a, GetColumnByIndex(i))] != 0)
+                    {
+                        rowNums.Add(numbersArray[GetByRow(a, GetColumnByIndex(i))]);
+                    }
+                }
+                int[] rows = rowNums.ToArray();
+                if (rows.Length != rows.Distinct().Count())
+                {
+                    return false;
+                }
+
+                List<int> colNums = new List<int>();
+                for (int b = 0; b < gridWidth; b++)
+                {
+                    if (numbersArray[GetByColumn(b, GetRowByIndex(i))] != 0)
+                    {
+                        colNums.Add(numbersArray[GetByColumn(b, GetRowByIndex(i))]);
+                    }
+                }
+                int[] cols = colNums.ToArray();
+                if (cols.Length != cols.Distinct().Count())
+                {
+                    return false;
+                }
+
+                List<int> squareNums = new List<int>();
+                for (int c = 0; c < numberOfSquares; c++)
+                {
+                    if (numbersArray[GetBySquare(GetSquareFromIndex(i), c)] != 0)
+                    {
+                        squareNums.Add(numbersArray[GetBySquare(GetSquareFromIndex(i), c)]);
+                    }
+                }
+                int[] squares = squareNums.ToArray();
+                if (squares.Length != squares.Distinct().Count())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public int NumberOfIncorrectSquares()
         {
             int numberIncorrect = 0;
-            int numberOfSquares = gridLength / (squareWidth * squareHeight);
             for (int i = 0; i < numberOfSquares; i++)
             {
-                if (!SquareValid(i))
+                if (!SquareValid(i)) // For each invalid square it checks for duplicate values, if there are the number incorrect increases by each duplicate
                 {
                     int[] squareValues = new int[gridHeight];
                     for (int x = 0; x < (gridHeight); x++)
