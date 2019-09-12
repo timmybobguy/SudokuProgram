@@ -151,7 +151,19 @@ namespace Sudoku
             return result;
         }
 
+        static public string s(string x)
+        {
+            Func<string, string, string> q = (m, n) => m + n + m + n + m;
+            var a = "╔" + q(q("=", "╤"), "╦") + "╗";
+            for (var i = 0; i < 9;) //once per row
+            {
+                //parse that row to an int, then spit out a formatted string
+                a += int.Parse(x.Substring(i * 9, 9)).ToString("\n║" + q(q(" 0 ", "│"), "║") + "║\n")
+                  // as well as a trailing row for the box
+                  + (i++ < 8 ? (i % 3 > 0 ? "╟" + q(q("-", "┼"), "╫") + "╢" : "╠" + q(q("=", "╪"), "╬") + "╣") : "╚" + q(q("=", "╧"), "╩") + "╝");
+            }
+            //expand placeholder characters before returning
+            return a.Replace("=", "═══").Replace("-", "───").Replace("0", " ");
+        }
     }
 }
-
-https://tio.run/##dVDLThsxFN3PV1he2XISXfJoUpwRQqy7KYsuoAtncJEzr2psQqooUsUXFCkRUqUKBIiqwCfwNfMj4TozDWxi@WjOPefeuWcmss0oL/TqzJrslBz@sE6nMgiCKFHWkv1ZEFinnImIdYXvcNq6Ua6KExISOugBQLsL0G/D@nwE6ML/swN9dDvQq4x3DsAAvLnTf1M6H7CBys2@SW5OyCdlMsaDWUAImaiCpBrXZvqc7DMuvXiQZzZPdOtLYZxmqW6N2CYhx5Z5sKqDj1hNpnzmX6VCWi4XYbm8r/GwhV8dZ@XykspvecFM5ogJoTFGxI2kkcrxsCPHQnDvxiHIGOsY65kXEhQSFJK6IcU6xZorEVJCxfTICPFVsFSIYXuPknJxQXfxgeu4xB4zHMAei73nQ1w3y8VLheXTFn5bpd1dD9xg/Mcaz1v4XTXAq4nfqPyt8W8L/0PlvNDurMiIan3W3xMVaUZD2sAf@qu6lL8ZTW8sflb3vQFoEPzQ@Wq@egU
