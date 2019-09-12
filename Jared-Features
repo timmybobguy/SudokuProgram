@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assigmnet
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            public Scores()
+            {
+                string[] numsarray = { "1,0,0,0,4,0,0,0,0,0,0,3,0,0,0,4" };
+                int Score = 0;
+                int TotalScore = 0;
+                int TagetScore = 100;
+                int TargetTime = 60;
+                int TimeTaken = 40;
+                int HintsUsed = 3;
+                int gridScore = 0;
+                int blanks = 0;
+                int TimeScore = 0;
+                int HintScore = 0;
+
+                if (TargetTime < TimeTaken)
+                {
+                    TimeScore = TagetScore + TimeTaken;
+                }
+                else
+                {
+                    TimeScore = TagetScore - TimeTaken;
+                }
+
+                HintScore = TotalScore - (HintsUsed * 10);
+
+                gridScore = numsarray.Length * 10;
+
+                for (var i = 0; i < 1; i++)
+                {
+                    
+                };
+
+                Score = TimeScore + gridScore - HintScore - blanks;
+
+                Console.WriteLine(Score);
+                Console.ReadKey();
+            }
+
+            public HighScores()
+            {
+                int HighScore = 0;
+                int Score = 300;
+                Console.WriteLine("HighScore: " + HighScore);
+
+                if (Score > HighScore)
+                {
+                    HighScore = Score;
+                    Console.WriteLine("New HighScore: " + HighScore);
+                }
+                else
+                {
+                    Console.WriteLine("You Did not beat the HighScore");
+                    Console.WriteLine("Current HighScore: " + HighScore);
+                }
+                Console.ReadKey();
+            }
+
+            
+        }
+    }
+}
