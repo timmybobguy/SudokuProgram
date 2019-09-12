@@ -54,7 +54,7 @@ namespace Sudoku
             hintsUsed = s.HintsUsed;
             timeTaken = s.TimeSpent;
             baseScore = s.BaseScore;
-            gridHeight = gridWidth = squareHeight * squareWidth;
+            gridHeight = gridWidth = squareWidth * squareHeight;
             gridLength = gridHeight * gridWidth;
             numberOfSquares = gridHeight;
             numbersArray = new int[gridLength];
@@ -110,15 +110,15 @@ namespace Sudoku
             string line = MakeLine(squareWidth) + "\n";
             for (int i = 0; i < numbersArray.Length; i++)
             {
-                if (i % squareWidth == 0)
+                if (i % squareHeight == 0)
                 {
                     line += "|";
                 }
-                if (i % ((squareWidth * squareWidth) * squareHeight) == 0 && i != 0)
+                if (i % (squareWidth*squareHeight)* squareHeight == 0 && i != 0)
                 {
                     line += "\n" + MakeLine(squareWidth);
                 }
-                bool endOfLine = i % (squareWidth * squareWidth) == 0 && i != 0;
+                bool endOfLine = i % (squareWidth * squareHeight) == 0 && i != 0;
                 line += endOfLine ? "\n|" + MakeSquare(numbersArray[i]) : MakeSquare(numbersArray[i]);
             }
             return line + "|\n" + MakeLine(squareWidth);
