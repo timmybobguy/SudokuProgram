@@ -21,7 +21,7 @@ namespace Sudoku
         {
             view.Start();
             //game.ToCSV();
-            game.FromCSV("sudokuGame1", false);
+            game.FromCSV("sudokuGame1", true);
             game.StartTimer();
             view.Show(game.ToPrettyString());
             game.ToCSV();

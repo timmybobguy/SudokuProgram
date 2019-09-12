@@ -114,7 +114,7 @@ namespace Sudoku
                 {
                     line += "|";
                 }
-                if (i % (squareWidth*squareHeight)* squareHeight == 0 && i != 0)
+                if (i % GetBySquare(numberOfSquares/squareWidth-1,3)-1 ==0 && i != 0)
                 {
                     line += "\n" + MakeLine(squareWidth);
                 }
@@ -150,20 +150,20 @@ namespace Sudoku
             } while (i <= ((n * n) * 4) + n);
             return result;
         }
-
-        static public string s(string x)
+        /*
+        public string s(string x)
         {
             Func<string, string, string> q = (m, n) => m + n + m + n + m;
             var a = "╔" + q(q("=", "╤"), "╦") + "╗";
-            for (var i = 0; i < 9;) //once per row
+            for (var i = 0; i < gridHeight;) //once per row
             {
                 //parse that row to an int, then spit out a formatted string
-                a += int.Parse(x.Substring(i * 9, 9)).ToString("\n║" + q(q(" 0 ", "│"), "║") + "║\n")
+                a += int.Parse(x.Substring(i * gridWidth, gridHeight)).ToString("\n║" + q(q(" 0 ", "│"), "║") + "║\n")
                   // as well as a trailing row for the box
-                  + (i++ < 8 ? (i % 3 > 0 ? "╟" + q(q("-", "┼"), "╫") + "╢" : "╠" + q(q("=", "╪"), "╬") + "╣") : "╚" + q(q("=", "╧"), "╩") + "╝");
+                  + (i++ < (numberOfSquares-1) ? (i % gridWidth-1 > 0 ? "╟" + q(q("-", "┼"), "╫") + "╢" : "╠" + q(q("=", "╪"), "╬") + "╣") : "╚" + q(q("=", "╧"), "╩") + "╝");
             }
             //expand placeholder characters before returning
             return a.Replace("=", "═══").Replace("-", "───").Replace("0", " ");
-        }
+        }*/
     }
 }
