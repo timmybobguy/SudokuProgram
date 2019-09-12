@@ -17,6 +17,7 @@ namespace Sudoku
         protected int numberOfSquares;
         public int[] numbersArray;
         public int[] originalNumbersArray;
+        public int[] lastSaveNumbersArray;
 
         public Game(int squareWidth, int squareHeight)
         {
@@ -59,10 +60,11 @@ namespace Sudoku
             squareHeight = theSquareHeight;
         }
 
-        public void Restart()
-        {
-            numbersArray = originalNumbersArray;
-        }
+        public void Restart() => loadSave(originalNumbersArray);
+
+        public void loadLastSave() => loadSave(lastSaveNumbersArray);
+
+        public void loadSave(int [] arrayToLoad) => numbersArray = arrayToLoad;
 
     }
 }

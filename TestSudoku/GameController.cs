@@ -24,6 +24,11 @@ namespace Sudoku
 
             game.FromCSV("sudokuGame1");
 
+            //Testing score
+            view.Show(game.GetScore());
+
+            game.StartTimer();
+
             //Testing hints
             //Array.ForEach(game.GetHint(), Console.WriteLine);
 

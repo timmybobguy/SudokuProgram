@@ -9,6 +9,7 @@ namespace Sudoku
     partial class Game
     {
         static Random rnd = new Random();
+        public int hintsUsed;
 
         public int[] GetHint()
         {

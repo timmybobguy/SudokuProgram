@@ -20,6 +20,12 @@ namespace Sudoku
             }
         }
 
+        public Dictionary<string, string> SplitInput(string input)
+        {
+            String.Split(input)
+            return 
+        }
+
         public int[] ToNumberList(string csvString)
         {
             string[] arrayOfStrings = Regex.Replace(csvString.TrimEnd('\r', '\n'), @"\t|\r\n", ",").Split(',');
