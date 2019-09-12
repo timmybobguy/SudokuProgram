@@ -10,7 +10,7 @@ namespace Sudoku
     {
         static void Main(string[] args)
         {
-            new GameController(new ConsoleView(), new Game(3,3)).Go();
+            new GameController(new ConsoleView(), new Game()).Go();
         }
     }
 }

@@ -47,8 +47,8 @@ namespace Sudoku
 
         public void SetSettings(GameSettings s)
         {
-            squareWidth = s.SquareWidth;
-            squareHeight = s.SquareHeight;
+            SetSquareWidth(s.SquareWidth);
+            SetSquareHeight(s.SquareHeight);
             highScore = s.Highscore;
             targetTime = s.TargetTime;
             timeTaken = s.TimeSpent;
@@ -57,8 +57,10 @@ namespace Sudoku
             gridLength = gridHeight * gridWidth;
             numberOfSquares = gridHeight;
             numbersArray = new int[gridLength];
-            //originalNumbersArray = new int[gridLength];
+            originalNumbersArray = new int[gridLength];
+            lastSaveNumbersArray = new int[gridLength];
         }
+
         public Dictionary<string, string> SplitInput(string input)
         {
             var parts = new Dictionary<string, string>();

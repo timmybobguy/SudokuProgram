@@ -19,17 +19,6 @@ namespace Sudoku
         public int[] originalNumbersArray;
         public int[] lastSaveNumbersArray;
 
-        public Game(int squareWidth, int squareHeight)
-        {
-            SetSquareHeight(squareWidth);
-            SetSquareWidth(squareHeight);
-            gridHeight = gridWidth = squareHeight * squareWidth;
-            gridLength = gridHeight * gridWidth;
-            numberOfSquares = gridHeight;
-            numbersArray = new int[gridLength];
-            originalNumbersArray = new int[gridLength];
-        }
-
         public void SetMaxValue(int maximum)
         {
             max = maximum;
@@ -60,11 +49,11 @@ namespace Sudoku
             squareHeight = theSquareHeight;
         }
 
-        public void Restart() => loadSave(originalNumbersArray);
+        public void Restart() => LoadSave(originalNumbersArray);
 
-        public void loadLastSave() => loadSave(lastSaveNumbersArray);
+        public void LoadLastSave() => LoadSave(lastSaveNumbersArray);
 
-        public void loadSave(int [] arrayToLoad) => numbersArray = arrayToLoad;
+        public void LoadSave(int [] arrayToLoad) => numbersArray = arrayToLoad;
 
     }
 }
