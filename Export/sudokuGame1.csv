@@ -7,3 +7,8 @@
 0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0
 0,3,0,0,0,0,0,0,6
+*{
+TargetTime: 200+
+TimeSpent:500000+Highscore: 2+
+SquareWidth:3+SquareHeight:3+BaseScore:100
+}
