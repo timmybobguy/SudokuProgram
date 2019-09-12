@@ -20,9 +20,7 @@ namespace Sudoku
         public int GetScore()
         {   
             int TimeScore = baseScore - (timeTaken-targetTime);
-
             int gridScore = 0;
-
             for (var i = 0; i < originalNumbersArray.Length; i++)
             {
                 if (i == 0)
@@ -30,9 +28,7 @@ namespace Sudoku
                     gridScore++;
                 }
             }
-
             gridScore = gridScore / originalNumbersArray.Length;
-
             return (TimeScore * gridScore) - (hintsUsed * 10);
         }
 
@@ -60,26 +56,13 @@ namespace Sudoku
             timeTaken++;
         }
 
-        public int GetHighScores()
+        public void SetHighScore()
         {
-            int result =0;
-            int HighScore = 0;
-            int Score = 300;
-            Console.WriteLine("HighScore: " + HighScore);
-
-            if (Score > HighScore)
+            if (GetScore() > highScore)
             {
-                HighScore = Score;
-                Console.WriteLine("New HighScore: " + HighScore);
+                highScore = GetScore();
+                
             }
-            else
-            {
-                Console.WriteLine("You Did not beat the HighScore");
-                Console.WriteLine("Current HighScore: " + HighScore);
-            }
-            Console.ReadKey();
-
-            return result;
         }
 
     }
