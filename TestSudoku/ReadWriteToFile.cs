@@ -4,26 +4,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace Sudoku
 {
     partial class Game : ISerialize
     {
-        public void FromCSV(string csv)
+        public void FromCSV(string csv, bool loadSave)
         {
             string csvText = System.IO.File.ReadAllText(@"..\..\..\Export\" + csv + ".csv");
-            int[] numbers = ToNumberList(csvText);
-            for( int i = 0; i< numbers.Length; i++ )
+            Dictionary<string, string> csvParts = SplitInput(csvText);
+            string OriginalSudoku = csvParts["OriginalSudoku"];
+            string EditedSudoku = csvParts.ContainsKey("EditedSudoku") ? csvParts["EditedSudoku"]: null;
+            string Settings = csvParts["Settings"];
+            GameSettings csvSettings = ReadJsonSettings(Settings);
+            SetSettings(csvSettings);
+            LoadNumbersArray(OriginalSudoku, loadSave?EditedSudoku:OriginalSudoku);
+        }
+
+        public void LoadNumbersArray(string sudoku, string editedSudoku)
+        {
+            int[] numbers = ToNumberList(sudoku);
+            int[] EditedNumbers = ToNumberList(editedSudoku);
+            originalNumbersArray = numbers;
+            lastSaveNumbersArray = EditedNumbers;
+            for (int i = 0; i < numbers.Length; i++)
             {
-                SetCell(numbers[i], i);
-                originalNumbersArray[i] = numbers[i];
+                SetCell(EditedNumbers[i], i);
             }
         }
 
+        public GameSettings ReadJsonSettings(string settings)
+        {
+            var deserializedUser = new GameSettings();
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(settings));
+            var ser = new DataContractJsonSerializer(deserializedUser.GetType());
+            deserializedUser = ser.ReadObject(ms) as GameSettings;
+            ms.Close();
+            return deserializedUser;
+        }
+
+        public void SetSettings(GameSettings s)
+        {
+            squareWidth = s.SquareWidth;
+            squareHeight = s.SquareHeight;
+            highScore = s.Highscore;
+            targetTime = s.TargetTime;
+            timeTaken = s.TimeSpent;
+            baseScore = s.BaseScore;
+            gridHeight = gridWidth = squareHeight * squareWidth;
+            gridLength = gridHeight * gridWidth;
+            numberOfSquares = gridHeight;
+            numbersArray = new int[gridLength];
+            //originalNumbersArray = new int[gridLength];
+        }
         public Dictionary<string, string> SplitInput(string input)
         {
-            String.Split(input)
-            return 
+            var parts = new Dictionary<string, string>();
+            string[] inputParts = input.Split('*');
+            parts.Add("Settings", inputParts[0]);
+            parts.Add("OriginalSudoku", inputParts[1]);
+            if (inputParts.Length>2)
+            {
+                parts.Add("EditedSudoku", inputParts[2]);
+            }
+            return parts;
         }
 
         public int[] ToNumberList(string csvString)
@@ -35,7 +81,7 @@ namespace Sudoku
         public string ToCSV()
         {
             string csvString = ToCSVString();
-            System.IO.File.WriteAllText(@"..\..\..\Export\Numbers.csv", csvString);
+            File.WriteAllText(@"..\..\..\Export\Numbers.csv", csvString);
             return csvString;
         }
 
