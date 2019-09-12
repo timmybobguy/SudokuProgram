@@ -84,7 +84,7 @@ namespace Sudoku
         public string ToCSV()
         {
             string csvString = ToCSVString();
-            File.WriteAllText(@"..\..\..\Export\Numbers.csv", csvString);
+            File.WriteAllText(@"..\..\..\Export\Export.csv", csvString);
             return csvString;
         }
 
