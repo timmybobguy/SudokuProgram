@@ -15,6 +15,8 @@ namespace Sudoku
         [DataMember]
         public int TimeSpent = 0;
         [DataMember]
+        public int HintsUsed = 0;
+        [DataMember]
         public int Highscore = 0;
         [DataMember]
         public int SquareWidth = 0;

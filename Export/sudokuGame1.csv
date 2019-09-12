@@ -1,6 +1,7 @@
 {
 	"TargetTime": 200,
 	"TimeSpent": 500000,
+	"HintsUsed": 2,
 	"Highscore": 2,
 	"SquareWidth": 2,
 	"SquareHeight": 3,

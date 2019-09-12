@@ -33,6 +33,7 @@ namespace Sudoku
             {
                 result[i + 1] = hints[i];
             }
+            hintsUsed++;
             return result;
         }
     }
