@@ -12,15 +12,7 @@ namespace Sudoku
         {
             for (int i = 0; i < gridHeight; i++)
             {
-                if (!ColumnValid(i))
-                {
-                    return false;
-                }
-                if (!RowValid(i))
-                {
-                    return false;
-                }
-                if (!SquareValid(i))
+                if (!CellValid(i))
                 {
                     return false;
                 }
