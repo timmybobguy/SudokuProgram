@@ -114,7 +114,7 @@ namespace Sudoku
                 {
                     line += "|";
                 }
-                if (i % GetBySquare(numberOfSquares/squareWidth-1,3)-1 ==0 && i != 0)
+                if (i % ((squareWidth * squareWidth) * squareHeight) == 0 && i != 0)
                 {
                     line += "\n" + MakeLine(squareWidth);
                 }
@@ -142,12 +142,12 @@ namespace Sudoku
         public string MakeLine(int n)
         {
             int i = 0;
-            string result = "";
+            string result = " ";
             do
             {
                 result += "-";
                 i++;
-            } while (i <= ((n * n) * 4) + n);
+            } while (i <= n * numberOfSquares+ (numberOfSquares+1));
             return result;
         }
         /*
