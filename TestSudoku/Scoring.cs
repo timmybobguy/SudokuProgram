@@ -12,8 +12,8 @@ namespace Sudoku
 
         public int highScore;
         public int targetTime;
-        private int timeTaken = 0;
-        private int baseScore = 100;
+        private int timeTaken;
+        private int baseScore;
         private static Timer aTimer;
 
 
