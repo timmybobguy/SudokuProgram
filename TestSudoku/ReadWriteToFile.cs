@@ -45,6 +45,15 @@ namespace Sudoku
             ms.Close();
             return deserializedUser;
         }
+        public string WriteJsonSettings(GameSettings settings)
+        {
+            var stream1 = new MemoryStream();
+            var ser = new DataContractJsonSerializer(typeof(GameSettings));
+            ser.WriteObject(stream1, settings);
+            stream1.Position = 0;
+            var sr = new StreamReader(stream1);
+            return sr.ReadToEnd();
+        }
 
         public void SetSettings(GameSettings s)
         {
@@ -62,6 +71,18 @@ namespace Sudoku
             originalNumbersArray = new int[gridLength];
             lastSaveNumbersArray = new int[gridLength];
         }
+        public GameSettings GetSettings()
+        {
+            GameSettings s = new GameSettings();
+            s.SquareWidth = squareWidth;
+            s.SquareHeight = squareHeight;
+            s.Highscore = highScore;
+            s.TargetTime = targetTime;
+            s.HintsUsed = hintsUsed;
+            s.TimeSpent = timeTaken;
+            s.BaseScore = baseScore;
+            return s;
+        }
 
         public Dictionary<string, string> SplitInput(string input)
         {
@@ -78,26 +99,29 @@ namespace Sudoku
 
         public int[] ToNumberList(string csvString)
         {
-            string[] arrayOfStrings = Regex.Replace(csvString.TrimEnd('\r', '\n'), @"\t|\r\n", ",").Split(',');
+            string[] arrayOfStrings = Regex.Replace(csvString.TrimEnd('\r', '\n'), @"\t|\r\n|\n", ",").Split(',');
             return Array.ConvertAll(arrayOfStrings, int.Parse);
         }
 
         public string ToCSV()
         {
-            string csvString = ToCSVString();
+            string gameSettings = WriteJsonSettings(GetSettings());
+            string original = ToCSVString(originalNumbersArray);
+            string currentSave = ToCSVString(numbersArray);
+            string csvString = gameSettings + "\n*" + original + "\n*" + currentSave;
             File.WriteAllText(@"..\..\..\Export\Export.csv", csvString);
             return csvString;
         }
 
-        public string ToCSVString()
+        public string ToCSVString(int[] numbers)
         {
-            string result = string.Empty;
-            for (int i = 0; i < numbersArray.Length; i++)
+            string result = numbers[0].ToString();
+            for (int i = 1; i < numbers.Length; i++)
             {
-                string number = numbersArray[i].ToString();
-                bool endOfLine = i % Math.Sqrt(numbersArray.Length) == 0 && i != 0;
-                bool isLastNumber = i == numbersArray.Length;
-                result += isLastNumber ? number : endOfLine ? "\n" + number + "," : number + ",";
+                string number = numbers[i].ToString();
+                bool endOfLine = i % Math.Sqrt(numbers.Length) == 0 && i != 0;
+                bool isLastNumber = i == numbers.Length;
+                result += isLastNumber ? number : endOfLine ? "\n" + number: "," + number;
             }
             return result;
         }
