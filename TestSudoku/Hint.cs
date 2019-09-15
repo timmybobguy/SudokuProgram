@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    partial class Game
+    public partial class Game
     {
         static Random rnd = new Random();
         public int hintsUsed;

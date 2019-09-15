@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Json;
 
 namespace Sudoku
 {
-    partial class Game : ISerialize
+    public partial class Game : ISerialize
     {
         public string FromCSV(string csv, bool loadSave)
         {

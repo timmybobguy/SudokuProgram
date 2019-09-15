@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    partial class Game : IGame
+    public partial class Game : IGame
     {
-        protected int squareWidth;
-        protected int squareHeight;
-        protected int gridWidth;
-        protected int gridHeight;
-        protected int gridLength;
-        protected int max;
-        protected int numberOfSquares;
+        public int squareWidth;
+        public int squareHeight;
+        public int gridWidth;
+        public int gridHeight;
+        public int gridLength;
+        public int max;
+        public int numberOfSquares;
         public int[] numbersArray;
         public int[] originalNumbersArray;
         public int[] lastSaveNumbersArray;

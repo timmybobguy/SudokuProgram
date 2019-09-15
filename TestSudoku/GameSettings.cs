@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Sudoku
 {
     [DataContract]
-    class GameSettings
+    public class GameSettings
     {
         [DataMember]
         public int TargetTime = 0;

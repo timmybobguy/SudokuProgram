@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Sudoku
 {
-    partial class Game
+    public partial class Game
     {
 
         public int highScore;

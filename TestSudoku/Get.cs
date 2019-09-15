@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    partial class Game:IGet
+    public partial class Game:IGet
     {
         public int GetByColumn(int columnIndex, int rowIndex)
         {

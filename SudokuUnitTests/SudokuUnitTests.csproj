@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FeatureTests\FeatureTests.csproj" />
     <ProjectReference Include="..\TestSudoku\Sudoku.csproj" />
   </ItemGroup>
 

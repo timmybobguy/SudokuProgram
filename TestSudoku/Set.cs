@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    partial class Game:ISet
+    public partial class Game:ISet
     {
         public void SetByColumn(int value, int columnIndex, int rowIndex)
         {
