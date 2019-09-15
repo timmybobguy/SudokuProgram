@@ -6,7 +6,7 @@ namespace Sudoku
 {
     interface ISerialize
     {
-        void FromCSV(string csv, bool loadSave);
+        string FromCSV(string csv, bool loadSave);
         string ToCSV();
         void SetCell(int value, int gridIndex);
         int GetCell(int gridIndex);

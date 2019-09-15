@@ -11,7 +11,7 @@ namespace Sudoku
 {
     partial class Game : ISerialize
     {
-        public void FromCSV(string csv, bool loadSave)
+        public string FromCSV(string csv, bool loadSave)
         {
             string csvText = System.IO.File.ReadAllText(@"..\..\..\Export\" + csv + ".csv");
             Dictionary<string, string> csvParts = SplitInput(csvText);
@@ -21,6 +21,7 @@ namespace Sudoku
             GameSettings csvSettings = ReadJsonSettings(Settings);
             SetSettings(csvSettings);
             LoadNumbersArray(OriginalSudoku, loadSave?EditedSudoku:OriginalSudoku);
+            return "loaded: " + csv + ".csv "+ (loadSave?"saved ":"orginal ") + "Sudoku";
         }
 
         public void LoadNumbersArray(string sudoku, string editedSudoku)
@@ -110,11 +111,12 @@ namespace Sudoku
             string line = MakeLine(squareWidth) + "\n";
             for (int i = 0; i < numbersArray.Length; i++)
             {
-                if (i % squareHeight == 0)
+                if (i % squareWidth == 0)
                 {
                     line += "|";
                 }
-                if (i % ((squareWidth * squareWidth) * squareHeight) == 0 && i != 0)
+                int a = ((squareWidth * squareHeight) * squareHeight);
+                if (i % a == 0 && i != 0)
                 {
                     line += "\n" + MakeLine(squareWidth);
                 }
@@ -141,29 +143,15 @@ namespace Sudoku
 
         public string MakeLine(int n)
         {
+            int a = n * 4 * squareHeight + n;
             int i = 0;
-            string result = " ";
+            string result = "";
             do
             {
                 result += "-";
                 i++;
-            } while (i <= n * numberOfSquares+ (numberOfSquares+1));
+            } while (i <= ((n*4)* squareHeight )+ (squareHeight));
             return result;
         }
-        /*
-        public string s(string x)
-        {
-            Func<string, string, string> q = (m, n) => m + n + m + n + m;
-            var a = "╔" + q(q("=", "╤"), "╦") + "╗";
-            for (var i = 0; i < gridHeight;) //once per row
-            {
-                //parse that row to an int, then spit out a formatted string
-                a += int.Parse(x.Substring(i * gridWidth, gridHeight)).ToString("\n║" + q(q(" 0 ", "│"), "║") + "║\n")
-                  // as well as a trailing row for the box
-                  + (i++ < (numberOfSquares-1) ? (i % gridWidth-1 > 0 ? "╟" + q(q("-", "┼"), "╫") + "╢" : "╠" + q(q("=", "╪"), "╬") + "╣") : "╚" + q(q("=", "╧"), "╩") + "╝");
-            }
-            //expand placeholder characters before returning
-            return a.Replace("=", "═══").Replace("-", "───").Replace("0", " ");
-        }*/
     }
 }
