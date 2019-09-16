@@ -23,7 +23,7 @@ namespace Sudoku
             int gridScore = 0;
             for (var i = 0; i < originalNumbersArray.Length; i++)
             {
-                if (i == 0)
+                if (originalNumbersArray[i] == 0)
                 {
                     gridScore++;
                 }
