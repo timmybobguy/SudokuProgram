@@ -15,7 +15,7 @@ namespace Sudoku
         {
             int x = rnd.Next(numbersArray.Length);
             bool found = false;
-            while (found)
+            while (!found)
             {
                 if (numbersArray[x] == 0)
                 {
