@@ -34,7 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,10 +62,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoring.cs" />
     <Compile Include="Set.cs" />
+    <Compile Include="SudokuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SudokuForm.Designer.cs">
+      <DependentUpon>SudokuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SudokuForm.resx">
+      <DependentUpon>SudokuForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

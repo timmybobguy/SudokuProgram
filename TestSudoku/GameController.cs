@@ -10,22 +10,33 @@ namespace Sudoku
     {
         protected IView view;
         protected Game game;
+        protected SudokuForm form;
 
-        public GameController(IView theView, Game theGame)
+        public GameController(IView theView, Game theGame, SudokuForm theForm)
         {
             view = theView;
             game = theGame;
+            form = theForm;
         }
 
         public void Go()
         {
             view.Start();
             //game.ToCSV();
-            view.Show(game.FromCSV("Export", false));
+            view.Show(game.FromCSV("3X3Blank", false));
             game.StartTimer();
             view.Show(game.ToPrettyString());
             game.ToCSV();
-            view.Stop();
+
+
+
+            //form.Show();
+
+            form.Initialise(game);
+
+            form.GenerateGrid(game.numbersArray);
+
+            //view.Stop();
         }
     }
 }
