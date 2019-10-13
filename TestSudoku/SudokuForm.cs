@@ -14,6 +14,7 @@ namespace Sudoku
     {
         protected Game game;
         private int lastHintIndex;
+        private Panel sudokuPanel;
 
         public SudokuForm()
         {
@@ -23,6 +24,13 @@ namespace Sudoku
         public void Initialise(Game theGame)
         {
             game = theGame;
+            sudokuPanel = new Panel
+            {
+                Location = new Point(10, 10),
+                Size = new Size(game.gridHeight * 50, game.gridWidth * 50),
+                BorderStyle = BorderStyle.Fixed3D
+        };
+            Controls.Add(sudokuPanel);
         }
 
         public void MakeSudokuButton(string name, string value, int row, int column, bool locked)
@@ -34,13 +42,17 @@ namespace Sudoku
             btnNew.Font = new Font("Arial", 20);
             btnNew.Text = value;
             btnNew.Visible = true;
+            btnNew.TextAlign = HorizontalAlignment.Center;
+            btnNew.BorderStyle = BorderStyle.None;
+
             if (locked == true)
             {
-               btnNew.ReadOnly = true;
+                btnNew.ReadOnly = true;
+                btnNew.Enabled = false;
             }
-            btnNew.Location = new Point(10 + 50 * row, 10 + 50 * column);
+            btnNew.Location = new Point(50 * row, 50 * column);
 
-            Controls.Add(btnNew);
+            sudokuPanel.Controls.Add(btnNew);
         }
 
         public void GenerateGrid(int[] numbersArray)
@@ -57,6 +69,7 @@ namespace Sudoku
                 }
                 
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,7 +78,7 @@ namespace Sudoku
             int? x = lastHintIndex;
             if (x.HasValue)
             {
-                Control lastHint = Controls.Find("sudoku_" + game.GetColumnByIndex(lastHintIndex) + "_" + game.GetRowByIndex(lastHintIndex), true)[0];
+                Control lastHint = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(lastHintIndex) + "_" + game.GetRowByIndex(lastHintIndex), true)[0];
                 lastHint.BackColor = Color.White;
             }
            
@@ -75,7 +88,7 @@ namespace Sudoku
             //txtName.BackColor = Color.Aqua;
 
 
-            Control hintTextBox = Controls.Find("sudoku_" + game.GetColumnByIndex(hintArray[0]) + "_" + game.GetRowByIndex(hintArray[0]), true)[0];
+            Control hintTextBox = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(hintArray[0]) + "_" + game.GetRowByIndex(hintArray[0]), true)[0];
             //Button b = c as Button;
 
             // c.Text = "@";
@@ -95,5 +108,10 @@ namespace Sudoku
             //;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Controls.Remove(sudokuPanel);
+            sudokuPanel.Dispose();
+        }
     }
 }
