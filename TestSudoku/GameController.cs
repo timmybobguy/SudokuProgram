@@ -34,7 +34,7 @@ namespace Sudoku
 
             form.Initialise(game);
 
-            form.GenerateGrid(game.numbersArray);
+            //form.GenerateGrid(game.numbersArray);
 
             //view.Stop();
         }

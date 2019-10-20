@@ -20,6 +20,8 @@ namespace Sudoku
 
             new GameController(new ConsoleView(), new Game(), form).Go();
             Application.Run(form);
+
+            Application.Run(new MenuForm());
         }
     }
 }
