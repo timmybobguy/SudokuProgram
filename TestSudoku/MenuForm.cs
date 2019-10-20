@@ -16,13 +16,14 @@ namespace Sudoku
     {
         private string[] fileList;
         private ListBox listBox;
+ 
 
         public MenuForm()
         {
             InitializeComponent();
             //Only done here for testing
             RefreshFileList();
-            CreateListBox();
+            CreateFileSelection();
         }
 
         public void RefreshFileList()
@@ -39,11 +40,14 @@ namespace Sudoku
             }
         }
 
-        public void CreateListBox()
+        public void CreateFileSelection()
         {
+      
+            //Creating listbox
             listBox = new ListBox();
             listBox.Size = new Size(600, 200);
             listBox.Location = new Point(10, 10);
+
             Controls.Add(listBox);
             //this initially updates the list box
             UpdateListBox();
