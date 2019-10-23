@@ -19,7 +19,7 @@ namespace Sudoku
             form = new SudokuForm();
 
             new GameController(new ConsoleView(), new Game(), form).Go();
-            Application.Run(form);
+            //Application.Run(form);
 
             Application.Run(new MenuForm());
         }
