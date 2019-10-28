@@ -30,8 +30,8 @@
         {
             this.refreshButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonSave = new System.Windows.Forms.RadioButton();
+            this.radioButtonNew = new System.Windows.Forms.RadioButton();
             this.loadButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -48,8 +48,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.radioButtonSave);
+            this.groupBox1.Controls.Add(this.radioButtonNew);
             this.groupBox1.Location = new System.Drawing.Point(12, 338);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
@@ -57,27 +57,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose load type";
             // 
-            // radioButton1
+            // radioButtonSave
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Load new game";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonSave.AutoSize = true;
+            this.radioButtonSave.Location = new System.Drawing.Point(7, 44);
+            this.radioButtonSave.Name = "radioButtonSave";
+            this.radioButtonSave.Size = new System.Drawing.Size(75, 17);
+            this.radioButtonSave.TabIndex = 1;
+            this.radioButtonSave.TabStop = true;
+            this.radioButtonSave.Text = "Load save";
+            this.radioButtonSave.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonNew
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 44);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(75, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Load save";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonNew.AutoSize = true;
+            this.radioButtonNew.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonNew.Name = "radioButtonNew";
+            this.radioButtonNew.Size = new System.Drawing.Size(101, 17);
+            this.radioButtonNew.TabIndex = 0;
+            this.radioButtonNew.TabStop = true;
+            this.radioButtonNew.Text = "Load new game";
+            this.radioButtonNew.UseVisualStyleBackColor = true;
             // 
             // loadButton
             // 
@@ -87,6 +87,7 @@
             this.loadButton.TabIndex = 2;
             this.loadButton.Text = "Start game";
             this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
             // MenuForm
             // 
@@ -108,8 +109,8 @@
 
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButtonSave;
+        private System.Windows.Forms.RadioButton radioButtonNew;
         private System.Windows.Forms.Button loadButton;
     }
 }

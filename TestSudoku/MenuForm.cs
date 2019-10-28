@@ -64,9 +64,44 @@ namespace Sudoku
             listBox.EndUpdate();
         }
 
+        public string GetSelection()
+        {
+            if (listBox.SelectedItem == null)
+            {
+                return "null";
+            }
+            else
+            {
+                return listBox.SelectedItem.ToString();
+            }
+        }
+
+        public bool? GetOption()
+        {
+            if (radioButtonNew.Checked == true)
+            {
+                return false;
+            }
+            else if (radioButtonSave.Checked == true)
+            {
+                return true;
+            }
+            else
+            {
+                return null; // When no option is selected
+            }
+        }
+
         private void refreshButton_Click(object sender, EventArgs e)
         {
             UpdateListBox();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e) //For testing this is just getting the selected item and the selected option
+        {
+            string file = GetSelection();
+            bool? options = GetOption();
+
         }
     }
 }
