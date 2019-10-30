@@ -9,19 +9,16 @@ namespace Sudoku
 {
     class Program
     {
-        private static SudokuForm form;
-
         static void Main(string[] args)
         {
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            form = new SudokuForm();
 
-            new GameController(new ConsoleView(), new Game(), form).Go();
+            new GameController(new ConsoleView(), new Game(), new MenuForm(), new SudokuForm()).Go();
             //Application.Run(form);
 
-            Application.Run(new MenuForm());
+            //Application.Run(new MenuForm());
         }
     }
 }

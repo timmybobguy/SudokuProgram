@@ -16,13 +16,22 @@ namespace Sudoku
     {
         private string[] fileList;
         private ListBox listBox;
+        protected Game game;
+        protected SudokuForm sudokuForm;
  
 
         public MenuForm()
         {
             InitializeComponent();
+        }
+
+        public void Initialise(Game theGame, SudokuForm theSudokuForm)
+        {
+            game = theGame;
+            sudokuForm = theSudokuForm;
             //Only done here for testing
             RefreshFileList();
+            FilterPaths();
             CreateFileSelection();
         }
 
@@ -76,6 +85,16 @@ namespace Sudoku
             }
         }
 
+        private void FilterPaths()
+        {
+            string toRemove = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "..\\..\\..\\Export";
+            for (var i = 0; i < fileList.Length; i++)
+            {
+                fileList[i] = fileList[i].Remove(0, toRemove.Length + 2);
+                fileList[i] = fileList[i].Remove(fileList[i].Length - 4);
+            }
+        }
+
         public bool? GetOption()
         {
             if (radioButtonNew.Checked == true)
@@ -99,8 +118,23 @@ namespace Sudoku
 
         private void loadButton_Click(object sender, EventArgs e) //For testing this is just getting the selected item and the selected option
         {
-            string file = GetSelection();
-            bool? options = GetOption();
+            bool? option = GetOption();
+            bool options = false;
+
+            if (option == null || GetSelection() == "")
+            {
+                //Do error message/thingy
+            }
+            else if (option == true)
+            {
+                options = true;
+            }
+            
+            game.FromCSV(GetSelection(), options);
+
+            sudokuForm.Initialise(game);
+            sudokuForm.GenerateGrid(game.numbersArray);
+            sudokuForm.ShowDialog();
 
         }
     }

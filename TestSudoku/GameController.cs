@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sudoku
 {
@@ -10,33 +11,37 @@ namespace Sudoku
     {
         protected IView view;
         protected Game game;
-        protected SudokuForm form;
+        protected MenuForm form;
+        protected SudokuForm sudokuForm;
 
-        public GameController(IView theView, Game theGame, SudokuForm theForm)
+        public GameController(IView theView, Game theGame, MenuForm theForm, SudokuForm theSudokuForm)
         {
             view = theView;
             game = theGame;
             form = theForm;
+            sudokuForm = theSudokuForm;
         }
 
         public void Go()
         {
-            view.Start();
+            sudokuForm.Visible = false;
+            form.Initialise(game, sudokuForm);
+            Application.Run(form);
+            
+            //view.Start();
+            ////game.ToCSV();
+            //view.Show(game.FromCSV("3X3Blank", false));
+            //game.StartTimer();
+            //view.Show(game.ToPrettyString());
             //game.ToCSV();
-            view.Show(game.FromCSV("3X3Blank", false));
-            game.StartTimer();
-            view.Show(game.ToPrettyString());
-            game.ToCSV();
+            
+            ////form.Show();
 
+            //form.Initialise(game);
 
+            ////form.GenerateGrid(game.numbersArray);
 
-            //form.Show();
-
-            form.Initialise(game);
-
-            //form.GenerateGrid(game.numbersArray);
-
-            //view.Stop();
+            ////view.Stop();
         }
     }
 }
