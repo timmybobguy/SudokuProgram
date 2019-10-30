@@ -24,7 +24,6 @@ namespace Sudoku
 
         public void Go()
         {
-            sudokuForm.Visible = false;
             form.Initialise(game, sudokuForm);
             Application.Run(form);
             
