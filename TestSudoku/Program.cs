@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sudoku
 {
@@ -10,7 +11,14 @@ namespace Sudoku
     {
         static void Main(string[] args)
         {
-            new GameController(new ConsoleView(), new Game()).Go();
+            
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            new GameController(new ConsoleView(), new Game(), new MenuForm(), new SudokuForm()).Go();
+            //Application.Run(form);
+
+            //Application.Run(new MenuForm());
         }
     }
 }

@@ -1,0 +1,16 @@
+{
+  "TargetTime": 200,
+  "TimeSpent": 500000,
+  "HintsUsed": 2,
+  "Highscore": 2,
+  "SquareWidth": 2,
+  "SquareHeight": 2,
+  "BaseScore": 100
+}*0,2,4,0
+1,0,0,3
+4,0,0,2
+0,1,3,0
+*0,2,4,0
+1,0,0,3
+4,0,0,2
+0,1,3,0
