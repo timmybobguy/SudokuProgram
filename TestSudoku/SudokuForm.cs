@@ -133,7 +133,7 @@ namespace Sudoku
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             //Resetting last hint
             int? x = lastHintIndex;
@@ -153,7 +153,7 @@ namespace Sudoku
             //Button b = c as Button;
 
             // c.Text = "@";
-            hintTextBox.BackColor = Color.Aqua;
+            
 
             string output = "";
             for (var i = 1; i < hintArray.Length; i++)
@@ -164,7 +164,9 @@ namespace Sudoku
             hintOutput.Text = output;
             lastHintIndex = hintArray[0];
 
-            
+            hintTextBox.BackColor = Color.Aqua;
+            await Task.Delay(2000);
+            hintTextBox.BackColor = Color.White;
 
             //;
         }
