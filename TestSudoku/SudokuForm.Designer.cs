@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.hintOutput = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.timerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -60,11 +61,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // timerLabel
+            // 
+            this.timerLabel.AutoSize = true;
+            this.timerLabel.Location = new System.Drawing.Point(726, 128);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(29, 13);
+            this.timerLabel.TabIndex = 3;
+            this.timerLabel.Text = "timer";
+            // 
             // SudokuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 777);
+            this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.hintOutput);
             this.Controls.Add(this.button1);
@@ -80,5 +91,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox hintOutput;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label timerLabel;
     }
 }

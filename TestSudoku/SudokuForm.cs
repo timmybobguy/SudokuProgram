@@ -29,6 +29,17 @@ namespace Sudoku
                 BorderStyle = BorderStyle.Fixed3D
             };
             Controls.Add(sudokuPanel);
+            game.StartTimer();
+
+            //Timer
+            Timer timer = new Timer();
+            timer.Interval = (1000); // 10 secs
+            timer.Tick += new EventHandler(UpdateTimer);
+            timer.Start();
+        }
+        private void UpdateTimer(object sender, EventArgs e)
+        {
+            timerLabel.Text = game.timeTaken.ToString();
         }
 
         public void MakeSudokuButton(string name, string value, int row, int column, bool locked)
@@ -118,7 +129,8 @@ namespace Sudoku
                     }
                     else
                     {
-                        game.SetByColumn(int.Parse(currentCell.Text), int.Parse((sender as TextBox).Name[7].ToString()), int.Parse((sender as TextBox).Name[9].ToString()));
+                        string[] splitArray = (sender as TextBox).Name.Split('_');
+                        game.SetByColumn(int.Parse(currentCell.Text), int.Parse(splitArray[1]), int.Parse(splitArray[2]));
                         IsPuzzleFinished();
                     }
                 }
@@ -130,6 +142,8 @@ namespace Sudoku
             if (game.IsPuzzleValid())
             {
                 hintOutput.Text = "Complete...";
+                game.StopTimer();
+
             }
         }
 
