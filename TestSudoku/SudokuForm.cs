@@ -32,6 +32,7 @@ namespace Sudoku
             game.StartTimer();
 
             //Timer
+            timerLabel.Text = game.timeTaken.ToString();
             Timer timer = new Timer();
             timer.Interval = (1000); // 10 secs
             timer.Tick += new EventHandler(UpdateTimer);
@@ -131,9 +132,19 @@ namespace Sudoku
                     {
                         string[] splitArray = (sender as TextBox).Name.Split('_');
                         game.SetByColumn(int.Parse(currentCell.Text), int.Parse(splitArray[1]), int.Parse(splitArray[2]));
+                        CheckHighlighting(game.GetByColumn(int.Parse(splitArray[1]), int.Parse(splitArray[2])));
                         IsPuzzleFinished();
+                        
                     }
                 }
+            }
+        }
+
+        private void CheckHighlighting(int index) //Not working at the moment
+        {
+            if (game.RowValid(game.GetRowByIndex(index)))
+            {
+                hintOutput.Text = "row valid";
             }
         }
 
@@ -144,6 +155,13 @@ namespace Sudoku
                 hintOutput.Text = "Complete...";
                 game.StopTimer();
 
+                foreach (Control ctrl in sudokuPanel.Controls)
+                {
+                    if ((ctrl as TextBox) != null)
+                    {
+                        (ctrl as TextBox).Enabled = false;
+                    }
+                }
             }
         }
 

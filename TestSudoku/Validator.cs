@@ -144,7 +144,7 @@ namespace Sudoku
             return validValues;
         }
 
-        private bool RowValid(int rowNumber)
+        public bool RowValid(int rowNumber)
         {
             int[] newArray = new int[gridLength];
             for (int i = 1; i < gridWidth; i++)
@@ -159,7 +159,7 @@ namespace Sudoku
             }
             return true;
         }
-        private bool ColumnValid(int columnNumber)
+        public bool ColumnValid(int columnNumber)
         {
             int[] newArray = new int[gridLength];
             for (int i = 1; i < gridHeight; i++)
@@ -175,7 +175,7 @@ namespace Sudoku
             return true;
         }
 
-        private bool SquareValid(int squareNumber)
+        public bool SquareValid(int squareNumber)
         {
             int Boxes = squareWidth * squareHeight;
             int[] newArray = new int[Boxes];

@@ -130,7 +130,7 @@ namespace Sudoku
                 options = true;
             }
             
-            game.FromCSV(GetSelection(), options);
+            game.FromCSV(GetSelection(), options); // Need to change so that it creates a new instance of the model every time instead of overriding it 
 
             sudokuForm.Initialise(game);
             sudokuForm.GenerateGrid(game.numbersArray);
