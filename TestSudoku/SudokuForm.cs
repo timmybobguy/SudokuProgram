@@ -144,7 +144,16 @@ namespace Sudoku
         {
             if (game.RowValid(game.GetRowByIndex(index)))
             {
+                Control[] rowArray = new Control[game.gridLength];
                 hintOutput.Text = "row valid";
+            }
+            if (game.ColumnValid(game.GetColumnByIndex(index)))
+            {
+                hintOutput.Text = "column valid";
+            }
+            if (game.SquareValid(game.GetSquareFromIndex(index)))
+            {
+                hintOutput.Text = "square valid";
             }
         }
 
