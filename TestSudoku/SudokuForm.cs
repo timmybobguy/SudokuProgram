@@ -140,7 +140,7 @@ namespace Sudoku
             }
         }
 
-        private void CheckHighlighting(int index) //Not working at the moment
+        private void CheckHighlighting(int index) //Is working but need to add the colour changing part and for column and square
         {
             if (game.RowValid(game.GetRowByIndex(index)))
             {
