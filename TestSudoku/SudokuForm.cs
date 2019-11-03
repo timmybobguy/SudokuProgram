@@ -50,7 +50,7 @@ namespace Sudoku
                 btnNew.ReadOnly = true;
                 btnNew.Enabled = false;
             }
-            btnNew.Location = new Point(50 * row, 50 * column);
+            btnNew.Location = new Point(50 * column, 50 * row);
 
             sudokuPanel.Controls.Add(btnNew);
         }
