@@ -15,6 +15,7 @@ namespace Sudoku
         protected Game game;
         private int lastHintIndex;
         private Panel sudokuPanel;
+        private Control beingWiped;
 
         public void Initialise(Game theGame)
         {
@@ -26,21 +27,23 @@ namespace Sudoku
                 Location = new Point(10, 10),
                 Size = new Size(game.gridHeight * 50, game.gridWidth * 50),
                 BorderStyle = BorderStyle.Fixed3D
-        };
+            };
             Controls.Add(sudokuPanel);
         }
 
         public void MakeSudokuButton(string name, string value, int row, int column, bool locked)
         {
-            TextBox btnNew = new TextBox();
-            btnNew.Name = name + column.ToString() + "_" + row.ToString();
-            btnNew.Height = 50;
-            btnNew.Width = 50;
-            btnNew.Font = new Font("Arial", 20);
-            btnNew.Text = value;
-            btnNew.Visible = true;
-            btnNew.TextAlign = HorizontalAlignment.Center;
-            btnNew.BorderStyle = BorderStyle.None;
+            TextBox btnNew = new TextBox
+            {
+                Name = name + column.ToString() + "_" + row.ToString(),
+                Height = 50,
+                Width = 50,
+                Font = new Font("Arial", 20),
+                Text = value,
+                Visible = true,
+                TextAlign = HorizontalAlignment.Center,
+                BorderStyle = BorderStyle.None
+            };
 
             if (locked == true)
             {
@@ -66,7 +69,68 @@ namespace Sudoku
                 }
                 
             }
+            // Giving all of the textboxes the commmon event
+            foreach (Control ctrl in sudokuPanel.Controls)
+            {
+                if ((ctrl as TextBox) != null)
+                {
+                    (ctrl as TextBox).TextChanged += CommonHandler_TextChanged;
+                }
+            }
+        }
 
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
+        private async void ShowIncorrectInput(Control currentCell)
+        {
+            currentCell.BackColor = Color.Red;
+            beingWiped = currentCell;
+            currentCell.Text = null;
+            beingWiped = null;
+            await Task.Delay(1000);
+            currentCell.BackColor = Color.White;
+        }
+
+        private void CommonHandler_TextChanged(object sender, EventArgs e)
+        {
+            Control currentCell = sudokuPanel.Controls.Find((sender as TextBox).Name, true)[0];
+
+            if (beingWiped != currentCell)
+            {
+                if (currentCell.Text != "")
+                {
+                    if (!IsDigitsOnly(currentCell.Text))
+                    {
+                        ShowIncorrectInput(currentCell);
+                    }
+                    else if (int.Parse(currentCell.Text) > game.numberOfSquares || int.Parse(currentCell.Text) == 0)
+                    {
+                        ShowIncorrectInput(currentCell);
+                    }
+                    else
+                    {
+                        game.SetByColumn(int.Parse(currentCell.Text), int.Parse((sender as TextBox).Name[7].ToString()), int.Parse((sender as TextBox).Name[9].ToString()));
+                        IsPuzzleFinished();
+                    }
+                }
+            }
+        }
+
+        private void IsPuzzleFinished()
+        {
+            if (game.IsPuzzleValid())
+            {
+                hintOutput.Text = "Complete...";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -111,5 +175,6 @@ namespace Sudoku
             sudokuPanel.Dispose();
         }
         
+
     }
 }
