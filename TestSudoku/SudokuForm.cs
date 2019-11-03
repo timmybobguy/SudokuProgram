@@ -16,13 +16,10 @@ namespace Sudoku
         private int lastHintIndex;
         private Panel sudokuPanel;
 
-        public SudokuForm()
-        {
-            InitializeComponent();
-        }
-
         public void Initialise(Game theGame)
         {
+            Controls.Clear();
+            InitializeComponent();
             game = theGame;
             sudokuPanel = new Panel
             {
@@ -113,5 +110,6 @@ namespace Sudoku
             Controls.Remove(sudokuPanel);
             sudokuPanel.Dispose();
         }
+        
     }
 }
