@@ -42,5 +42,10 @@ namespace Sudoku
 
             ////view.Stop();
         }
+
+        public void StartSudoku()
+        {
+            // Make the controller create a new instance of the model each time a game is loaded
+        }
     }
 }
