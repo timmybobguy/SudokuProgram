@@ -153,10 +153,22 @@ namespace Sudoku
             }
             if (game.ColumnValid(game.GetColumnByIndex(index)))
             {
+                for (var i = 0; i < game.gridHeight; i++)
+                {
+                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(index) + "_" + i, true)[0].BackColor = Color.Green;
+                }
+
                 hintOutput.Text = "column valid";
             }
             if (game.SquareValid(game.GetSquareFromIndex(index)))
             {
+                int square = game.GetSquareFromIndex(index);
+
+                for (var i = 0; i < game.numberOfSquares; i++)
+                {
+                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(game.GetBySquare(square, i)) + "_" + game.GetRowByIndex(game.GetBySquare(square, i)), true)[0].BackColor = Color.Green;
+                }
+
                 hintOutput.Text = "square valid";
             }
         }
