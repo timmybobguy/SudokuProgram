@@ -144,7 +144,11 @@ namespace Sudoku
         {
             if (game.RowValid(game.GetRowByIndex(index)))
             {
-                Control[] rowArray = new Control[game.gridLength];
+                for (var i = 0; i < game.gridWidth; i++)
+                {
+                    sudokuPanel.Controls.Find("sudoku_" + i + "_" + game.GetRowByIndex(index), true)[0].BackColor = Color.Green;
+                }
+
                 hintOutput.Text = "row valid";
             }
             if (game.ColumnValid(game.GetColumnByIndex(index)))
@@ -209,7 +213,6 @@ namespace Sudoku
             await Task.Delay(2000);
             hintTextBox.BackColor = Color.White;
 
-            //;
         }
 
         private void button2_Click(object sender, EventArgs e)

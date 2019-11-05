@@ -147,7 +147,7 @@ namespace Sudoku
         public bool RowValid(int rowNumber)
         {
             int[] newArray = new int[gridLength];
-            for (int i = 1; i < gridWidth; i++)
+            for (int i = 0; i < gridWidth; i++)
             {
                 int number = numbersArray[GetByRow(rowNumber, i)];
                 if (number == 0 || newArray.Contains(number))
@@ -162,7 +162,7 @@ namespace Sudoku
         public bool ColumnValid(int columnNumber)
         {
             int[] newArray = new int[gridLength];
-            for (int i = 1; i < gridHeight; i++)
+            for (int i = 0; i < gridHeight; i++)
             {
                 int number = numbersArray[GetByColumn(columnNumber, i)];
                 if (number == 0 || newArray.Contains(number))
