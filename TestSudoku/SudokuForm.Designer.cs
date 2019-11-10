@@ -1,6 +1,6 @@
 ﻿namespace Sudoku
 {
-    partial class SudokuForm
+    partial class Form
     {
         /// <summary>
         /// Required designer variable.

@@ -16,5 +16,10 @@ namespace Sudoku
         {
             InitializeComponent();
         }
+
+        public void GenerateGrid()
+        {
+            
+        }
     }
 }

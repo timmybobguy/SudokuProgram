@@ -12,7 +12,7 @@ using System.IO;
 
 namespace Sudoku
 {
-    public partial class MenuForm : Form
+    public partial class MenuForm : System.Windows.Forms.Form
     {
         private string[] fileList;
         private ListBox listBox;
@@ -135,10 +135,12 @@ namespace Sudoku
 
         private void buttonStartEditor_Click(object sender, EventArgs e)
         {
-            int x = (int)numericUpDown1.Value;
-            int y = (int)numericUpDown2.Value;
-            controller.StartEditor(x,y);
+            controller.StartEditor((int)numericUpDown1.Value, (int)numericUpDown2.Value, false, null);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            controller.StartEditor(0, 0, true, GetSelection());
+        }
     }   
 }

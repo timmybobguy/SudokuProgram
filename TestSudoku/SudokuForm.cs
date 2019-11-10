@@ -10,18 +10,20 @@ using System.Windows.Forms;
 
 namespace Sudoku
 {
-    public partial class SudokuForm : Form
+    public partial class Form : System.Windows.Forms.Form
     {
         protected Game game;
         private int lastHintIndex;
         private Panel sudokuPanel;
         private Control beingWiped;
+        protected GameController controller;
 
-        public void Initialise(Game theGame)
+        public void Initialise(Game theGame, GameController theGameController)
         {
             Controls.Clear();
             InitializeComponent();
             game = theGame;
+            controller = theGameController;
             sudokuPanel = new Panel
             {
                 Location = new Point(10, 10),
@@ -43,41 +45,18 @@ namespace Sudoku
             timerLabel.Text = game.timeTaken.ToString();
         }
 
-        public void MakeSudokuButton(string name, string value, int row, int column, bool locked)
-        {
-            TextBox btnNew = new TextBox
-            {
-                Name = name + column.ToString() + "_" + row.ToString(),
-                Height = 50,
-                Width = 50,
-                Font = new Font("Arial", 20),
-                Text = value,
-                Visible = true,
-                TextAlign = HorizontalAlignment.Center,
-                BorderStyle = BorderStyle.None
-            };
-
-            if (locked == true)
-            {
-                btnNew.ReadOnly = true;
-                btnNew.Enabled = false;
-            }
-            btnNew.Location = new Point(50 * column, 50 * row);
-
-            sudokuPanel.Controls.Add(btnNew);
-        }
-
         public void GenerateGrid(int[] numbersArray)
         {
             for (var i = 0; i < numbersArray.Length; i++)
             {
                 if (numbersArray[i] == 0)
                 {
-                    MakeSudokuButton("sudoku_", "", game.GetRowByIndex(i), game.GetColumnByIndex(i), false);
+                    sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", "", game.GetRowByIndex(i), game.GetColumnByIndex(i), false));
                 }
                 else
                 {
-                    MakeSudokuButton("sudoku_", numbersArray[i].ToString(), game.GetRowByIndex(i), game.GetColumnByIndex(i), true);
+
+                    sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", numbersArray[i].ToString(), game.GetRowByIndex(i), game.GetColumnByIndex(i), true));
                 }
                 
             }

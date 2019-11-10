@@ -15,7 +15,7 @@ namespace Sudoku
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            new GameController(new ConsoleView(), new Game(), new MenuForm(), new SudokuForm()).Go();
+            new GameController(new ConsoleView(), new Game(), new MenuForm()).Go();
             //Application.Run(form);
 
             //Application.Run(new MenuForm());
