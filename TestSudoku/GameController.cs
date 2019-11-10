@@ -13,6 +13,7 @@ namespace Sudoku
         protected Game game;
         protected MenuForm form;
         protected SudokuForm sudokuForm;
+        protected EditorForm editorForm;
 
         public GameController(IView theView, Game theGame, MenuForm theForm, SudokuForm theSudokuForm)
         {
@@ -20,6 +21,7 @@ namespace Sudoku
             game = theGame;
             form = theForm;
             sudokuForm = theSudokuForm;
+            editorForm = new EditorForm();
         }
 
         public void Go()
@@ -53,10 +55,12 @@ namespace Sudoku
             sudokuForm.ShowDialog();
         }
 
-        public void StartEditor()
+        public void StartEditor(int x, int y)
         {
             game = new Game();
-
+            int[] grid = game.CreateGridBlank(x, y);
+            game.Set(grid);
+            editorForm.ShowDialog();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Sudoku
         private ListBox listBox;
         protected Game game;
         protected GameController controller;
- 
+
 
         public MenuForm()
         {
@@ -51,7 +51,7 @@ namespace Sudoku
 
         public void CreateFileSelection()
         {
-      
+
             //Creating listbox
             listBox = new ListBox();
             listBox.Size = new Size(600, 200);
@@ -129,13 +129,16 @@ namespace Sudoku
             {
                 options = true;
             }
-            
+
             controller.StartSudoku(GetSelection(), options);
         }
 
         private void buttonStartEditor_Click(object sender, EventArgs e)
         {
-            controller.StartEditor();
+            int x = (int)numericUpDown1.Value;
+            int y = (int)numericUpDown2.Value;
+            controller.StartEditor(x,y);
         }
-    }
+
+    }   
 }

@@ -8,7 +8,7 @@ namespace Sudoku
 {
     public partial class Game
     {
-        private int[] CreateGridBlank( int width, int height)
+        public int[] CreateGridBlank( int width, int height)
         {
             int length = Convert.ToInt32(Math.Pow(width * height, 2));
             int[] blankGrid = new int[length];
