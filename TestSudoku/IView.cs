@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sudoku
 {
-    interface IView
+    public interface IView
     {
         void Start();
         void Stop();

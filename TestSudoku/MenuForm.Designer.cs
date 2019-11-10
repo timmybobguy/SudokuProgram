@@ -33,6 +33,7 @@
             this.radioButtonSave = new System.Windows.Forms.RadioButton();
             this.radioButtonNew = new System.Windows.Forms.RadioButton();
             this.loadButton = new System.Windows.Forms.Button();
+            this.buttonStartEditor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,11 +90,22 @@
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
+            // buttonStartEditor
+            // 
+            this.buttonStartEditor.Location = new System.Drawing.Point(234, 403);
+            this.buttonStartEditor.Name = "buttonStartEditor";
+            this.buttonStartEditor.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartEditor.TabIndex = 3;
+            this.buttonStartEditor.Text = "Start editor";
+            this.buttonStartEditor.UseVisualStyleBackColor = true;
+            this.buttonStartEditor.Click += new System.EventHandler(this.buttonStartEditor_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonStartEditor);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.refreshButton);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.RadioButton radioButtonSave;
         private System.Windows.Forms.RadioButton radioButtonNew;
         private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Button buttonStartEditor;
     }
 }

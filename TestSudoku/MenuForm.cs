@@ -17,7 +17,7 @@ namespace Sudoku
         private string[] fileList;
         private ListBox listBox;
         protected Game game;
-        protected SudokuForm sudokuForm;
+        protected GameController controller;
  
 
         public MenuForm()
@@ -25,10 +25,10 @@ namespace Sudoku
             InitializeComponent();
         }
 
-        public void Initialise(Game theGame, SudokuForm theSudokuForm)
+        public void Initialise(Game theGame, GameController theController)
         {
             game = theGame;
-            sudokuForm = theSudokuForm;
+            controller = theController;
             //Only done here for testing
             RefreshFileList();
             FilterPaths();
@@ -130,12 +130,12 @@ namespace Sudoku
                 options = true;
             }
             
-            game.FromCSV(GetSelection(), options); // Need to change so that it creates a new instance of the model every time instead of overriding it 
+            controller.StartSudoku(GetSelection(), options);
+        }
 
-            sudokuForm.Initialise(game);
-            sudokuForm.GenerateGrid(game.numbersArray);
-            sudokuForm.ShowDialog();
-
+        private void buttonStartEditor_Click(object sender, EventArgs e)
+        {
+            controller.StartEditor();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Sudoku
 {
-    class GameController
+    public class GameController
     {
         protected IView view;
         protected Game game;
@@ -24,7 +24,7 @@ namespace Sudoku
 
         public void Go()
         {
-            form.Initialise(game, sudokuForm);
+            form.Initialise(game, this);
             Application.Run(form);
             
             //view.Start();
@@ -43,9 +43,20 @@ namespace Sudoku
             ////view.Stop();
         }
 
-        public void StartSudoku()
+        public void StartSudoku(string selection, bool options)
         {
             // Make the controller create a new instance of the model each time a game is loaded
+            game = new Game();
+            game.FromCSV(selection, options);
+            sudokuForm.Initialise(game);
+            sudokuForm.GenerateGrid(game.numbersArray);
+            sudokuForm.ShowDialog();
+        }
+
+        public void StartEditor()
+        {
+            game = new Game();
+
         }
     }
 }
