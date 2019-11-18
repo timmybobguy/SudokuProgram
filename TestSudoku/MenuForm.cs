@@ -135,12 +135,15 @@ namespace Sudoku
 
         private void buttonStartEditor_Click(object sender, EventArgs e)
         {
-            controller.StartEditor((int)numericUpDown1.Value, (int)numericUpDown2.Value, false, null);
+           controller.StartEditor((int)numericUpDown1.Value, (int)numericUpDown2.Value, false, null);   
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            controller.StartEditor(0, 0, true, GetSelection());
+            if (GetSelection() != "null")
+            {
+                controller.StartEditor(0, 0, true, GetSelection());
+            }
         }
     }   
 }

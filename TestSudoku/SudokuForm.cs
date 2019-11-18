@@ -119,13 +119,13 @@ namespace Sudoku
             }
         }
 
-        private void CheckHighlighting(int index) //Is working but need to add the colour changing part and for column and square
+        private void CheckHighlighting(int index)
         {
             if (game.RowValid(game.GetRowByIndex(index)))
             {
                 for (var i = 0; i < game.gridWidth; i++)
                 {
-                    sudokuPanel.Controls.Find("sudoku_" + i + "_" + game.GetRowByIndex(index), true)[0].BackColor = Color.Green;
+                    sudokuPanel.Controls.Find("sudoku_" + i + "_" + game.GetRowByIndex(index), true)[0].ForeColor = Color.Green;
                 }
 
                 hintOutput.Text = "row valid";
@@ -134,7 +134,7 @@ namespace Sudoku
             {
                 for (var i = 0; i < game.gridHeight; i++)
                 {
-                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(index) + "_" + i, true)[0].BackColor = Color.Green;
+                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(index) + "_" + i, true)[0].ForeColor = Color.Green;
                 }
 
                 hintOutput.Text = "column valid";
@@ -145,7 +145,7 @@ namespace Sudoku
 
                 for (var i = 0; i < game.numberOfSquares; i++)
                 {
-                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(game.GetBySquare(square, i)) + "_" + game.GetRowByIndex(game.GetBySquare(square, i)), true)[0].BackColor = Color.Green;
+                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(game.GetBySquare(square, i)) + "_" + game.GetRowByIndex(game.GetBySquare(square, i)), true)[0].ForeColor = Color.Green;
                 }
 
                 hintOutput.Text = "square valid";
