@@ -45,18 +45,24 @@ namespace Sudoku
             timerLabel.Text = game.timeTaken.ToString();
         }
 
-        public void GenerateGrid(int[] numbersArray)
+        public void GenerateGrid(int[] originalNumbersArray, int[] currentSaveArray)
         {
-            for (var i = 0; i < numbersArray.Length; i++)
+            for (var i = 0; i < originalNumbersArray.Length; i++)
             {
-                if (numbersArray[i] == 0)
+                if (originalNumbersArray[i] == 0)
                 {
-                    sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", "", game.GetRowByIndex(i), game.GetColumnByIndex(i), false));
+                    if (currentSaveArray[i] != 0)
+                    {
+                        sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", currentSaveArray[i].ToString(), game.GetRowByIndex(i), game.GetColumnByIndex(i), false));
+                    }
+                    else
+                    {
+                        sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", "", game.GetRowByIndex(i), game.GetColumnByIndex(i), false));
+                    }
                 }
                 else
                 {
-
-                    sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", numbersArray[i].ToString(), game.GetRowByIndex(i), game.GetColumnByIndex(i), true));
+                    sudokuPanel.Controls.Add(controller.MakeSudokuButton("sudoku_", originalNumbersArray[i].ToString(), game.GetRowByIndex(i), game.GetColumnByIndex(i), true));
                 }
                 
             }
@@ -211,7 +217,10 @@ namespace Sudoku
             Controls.Remove(sudokuPanel);
             sudokuPanel.Dispose();
         }
-        
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            controller.SaveAndQuit();
+        }
     }
 }

@@ -32,6 +32,7 @@
             this.hintOutput = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.timerLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -70,16 +71,27 @@
             this.timerLabel.TabIndex = 3;
             this.timerLabel.Text = "timer";
             // 
-            // SudokuForm
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(701, 191);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 41);
+            this.saveButton.TabIndex = 4;
+            this.saveButton.Text = "Save and quit";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 777);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.hintOutput);
             this.Controls.Add(this.button1);
-            this.Name = "SudokuForm";
+            this.Name = "Form";
             this.Text = "SudokuForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -92,5 +104,6 @@
         private System.Windows.Forms.TextBox hintOutput;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label timerLabel;
+        private System.Windows.Forms.Button saveButton;
     }
 }

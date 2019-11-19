@@ -16,6 +16,8 @@ namespace Sudoku
         protected Form sudokuForm;
         protected EditorForm editorForm;
 
+        private string currentFileName;
+
         public GameController(IView theView, Game theGame, MenuForm theForm)
         {
             view = theView;
@@ -46,13 +48,14 @@ namespace Sudoku
             ////view.Stop();
         }
 
-        public void StartSudoku(string selection, bool options)
+        public void StartSudoku(string selection, bool options, string fileName)
         {
             // Make the controller create a new instance of the model each time a game is loaded
+            currentFileName = fileName;
             game = new Game();
             game.FromCSV(selection, options);
             sudokuForm.Initialise(game, this);
-            sudokuForm.GenerateGrid(game.numbersArray);
+            sudokuForm.GenerateGrid(game.originalNumbersArray, game.lastSaveNumbersArray);
             sudokuForm.ShowDialog();
         }
 
@@ -96,6 +99,12 @@ namespace Sudoku
             btnNew.Location = new Point(50 * column, 50 * row);
 
             return btnNew;
+        }
+
+        public void SaveAndQuit()
+        {
+            game.ToCSV(currentFileName);
+            sudokuForm.Close();
         }
     }
 }

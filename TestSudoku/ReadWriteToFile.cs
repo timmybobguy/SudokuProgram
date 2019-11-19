@@ -103,13 +103,13 @@ namespace Sudoku
             return Array.ConvertAll(arrayOfStrings, int.Parse);
         }
 
-        public string ToCSV()
+        public string ToCSV(string fileName)
         {
             string gameSettings = WriteJsonSettings(GetSettings());
             string original = ToCSVString(originalNumbersArray);
             string currentSave = ToCSVString(numbersArray);
             string csvString = gameSettings + "\n*" + original + "\n*" + currentSave;
-            File.WriteAllText(@"..\..\..\Export\Export.csv", csvString);
+            File.WriteAllText(@"..\..\..\Export\" + fileName + ".csv", csvString);
             return csvString;
         }
 
