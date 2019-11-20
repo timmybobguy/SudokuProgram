@@ -54,6 +54,10 @@ namespace Sudoku
             currentFileName = selection;
             game = new Game();
             game.FromCSV(selection, options);
+            if (options == false)
+            {
+                game.timeTaken = 0;
+            }
             sudokuForm.Initialise(game, this);
             sudokuForm.GenerateGrid(game.originalNumbersArray, game.lastSaveNumbersArray);
             sudokuForm.ShowDialog();
@@ -114,6 +118,7 @@ namespace Sudoku
             game.lastSaveNumbersArray = game.originalNumbersArray;
             game.numbersArray = game.originalNumbersArray;
             //game.Restart();
+            game.timeTaken = 0;
             game.ToCSV(currentFileName);
 
             game = new Game();
