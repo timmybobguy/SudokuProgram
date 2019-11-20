@@ -114,7 +114,10 @@ namespace Sudoku
             game.lastSaveNumbersArray = game.originalNumbersArray;
             game.numbersArray = game.originalNumbersArray;
             //game.Restart();
+            game.ToCSV(currentFileName);
 
+            game = new Game();
+            game.FromCSV(currentFileName, false);
             sudokuForm.Initialise(game, this);
             sudokuForm.GenerateGrid(game.originalNumbersArray, game.lastSaveNumbersArray);
         }
