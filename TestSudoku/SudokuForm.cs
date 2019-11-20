@@ -222,5 +222,10 @@ namespace Sudoku
         {
             controller.SaveAndQuit();
         }
+
+        private void restartButton_Click(object sender, EventArgs e)
+        {
+            controller.RestartGame();
+        }
     }
 }

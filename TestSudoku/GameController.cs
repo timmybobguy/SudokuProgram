@@ -48,10 +48,10 @@ namespace Sudoku
             ////view.Stop();
         }
 
-        public void StartSudoku(string selection, bool options, string fileName)
+        public void StartSudoku(string selection, bool options)
         {
             // Make the controller create a new instance of the model each time a game is loaded
-            currentFileName = fileName;
+            currentFileName = selection;
             game = new Game();
             game.FromCSV(selection, options);
             sudokuForm.Initialise(game, this);
@@ -103,8 +103,20 @@ namespace Sudoku
 
         public void SaveAndQuit()
         {
+            game.StopTimer();
             game.ToCSV(currentFileName);
             sudokuForm.Close();
+        }
+
+        public void RestartGame()
+        {
+            game.StopTimer();
+            game.lastSaveNumbersArray = game.originalNumbersArray;
+            game.numbersArray = game.originalNumbersArray;
+            //game.Restart();
+
+            sudokuForm.Initialise(game, this);
+            sudokuForm.GenerateGrid(game.originalNumbersArray, game.lastSaveNumbersArray);
         }
     }
 }

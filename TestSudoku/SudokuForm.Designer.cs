@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.timerLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
+            this.restartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -81,11 +82,22 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.button3_Click);
             // 
+            // restartButton
+            // 
+            this.restartButton.Location = new System.Drawing.Point(701, 258);
+            this.restartButton.Name = "restartButton";
+            this.restartButton.Size = new System.Drawing.Size(75, 23);
+            this.restartButton.TabIndex = 5;
+            this.restartButton.Text = "Restart";
+            this.restartButton.UseVisualStyleBackColor = true;
+            this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 777);
+            this.Controls.Add(this.restartButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.button2);
@@ -105,5 +117,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button restartButton;
     }
 }

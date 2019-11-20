@@ -130,7 +130,7 @@ namespace Sudoku
                 options = true;
             }
 
-            controller.StartSudoku(GetSelection(), options, GetSelection());
+            controller.StartSudoku(GetSelection(), options);
         }
 
         private void buttonStartEditor_Click(object sender, EventArgs e)
