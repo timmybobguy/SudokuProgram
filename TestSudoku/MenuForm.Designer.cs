@@ -99,7 +99,7 @@
             // 
             // buttonStartEditor
             // 
-            this.buttonStartEditor.Location = new System.Drawing.Point(678, 387);
+            this.buttonStartEditor.Location = new System.Drawing.Point(678, 391);
             this.buttonStartEditor.Name = "buttonStartEditor";
             this.buttonStartEditor.Size = new System.Drawing.Size(75, 23);
             this.buttonStartEditor.TabIndex = 3;
