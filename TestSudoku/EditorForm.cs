@@ -15,12 +15,14 @@ namespace Sudoku
         protected Game game;
         protected GameController controller;
         private Panel sudokuPanel;
+        private bool isNewGame;
 
         public void Initialise(Game theGame, GameController theGameController, int x, int y, bool newGame)
         {
             Controls.Clear();
             InitializeComponent();
             game = theGame;
+            isNewGame = newGame;
 
             if (newGame == true)
             {
@@ -59,6 +61,18 @@ namespace Sudoku
         public void ExistingFile()
         {
             inputText.Text = "this file already exists";
+        }
+
+        private void saveExisting_Click(object sender, EventArgs e)
+        {
+            if (isNewGame == false)
+            {
+                controller.SaveAndQuit(null);
+            }
+            else
+            {
+                inputText.Text = "This is a new file, it needs a name";
+            }
         }
     }
 }
