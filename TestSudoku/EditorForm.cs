@@ -108,8 +108,6 @@ namespace Sudoku
                     {
                         string[] splitArray = (sender as TextBox).Name.Split('_');
                         game.SetByColumn(int.Parse(currentCell.Text), int.Parse(splitArray[1]), int.Parse(splitArray[2]));
-
-
                     }
                 }
             }

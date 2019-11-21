@@ -136,6 +136,8 @@ namespace Sudoku
                 }
                 if (alreadyExists == false)
                 {
+                    game.originalNumbersArray = game.numbersArray;
+                    game.lastSaveNumbersArray = game.numbersArray;
                     game.ToCSV(newFileName);
                     editorForm.Close();
                     form.UpdateListBox();
