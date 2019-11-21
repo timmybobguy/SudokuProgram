@@ -30,10 +30,10 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.hintOutput = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.timerLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.restartButton = new System.Windows.Forms.Button();
+            this.numWrong = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -52,16 +52,6 @@
             this.hintOutput.Name = "hintOutput";
             this.hintOutput.Size = new System.Drawing.Size(100, 20);
             this.hintOutput.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(701, 67);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Reload";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // timerLabel
             // 
@@ -92,15 +82,24 @@
             this.restartButton.UseVisualStyleBackColor = true;
             this.restartButton.Click += new System.EventHandler(this.restartButton_Click);
             // 
+            // numWrong
+            // 
+            this.numWrong.AutoSize = true;
+            this.numWrong.Location = new System.Drawing.Point(708, 64);
+            this.numWrong.Name = "numWrong";
+            this.numWrong.Size = new System.Drawing.Size(59, 13);
+            this.numWrong.TabIndex = 6;
+            this.numWrong.Text = "numWrong";
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 777);
+            this.Controls.Add(this.numWrong);
             this.Controls.Add(this.restartButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.timerLabel);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.hintOutput);
             this.Controls.Add(this.button1);
             this.Name = "Form";
@@ -114,9 +113,9 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox hintOutput;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button restartButton;
+        private System.Windows.Forms.Label numWrong;
     }
 }

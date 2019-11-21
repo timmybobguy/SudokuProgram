@@ -175,6 +175,11 @@ namespace Sudoku
                     }
                 }
             }
+            else if (Array.Exists(game.numbersArray, element => element == 0) != true)
+            {
+                int wrongNum = game.NumberOfIncorrectSquares();
+                numWrong.Text = wrongNum.ToString() + " cell/s are still incorrect";
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -212,12 +217,6 @@ namespace Sudoku
             await Task.Delay(2000);
             hintTextBox.BackColor = Color.White;
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Controls.Remove(sudokuPanel);
-            sudokuPanel.Dispose();
         }
 
         private void button3_Click(object sender, EventArgs e)
