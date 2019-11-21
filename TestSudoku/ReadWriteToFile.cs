@@ -45,6 +45,7 @@ namespace Sudoku
             ms.Close();
             return deserializedUser;
         }
+
         public string WriteJsonSettings(GameSettings settings)
         {
             var stream1 = new MemoryStream();
@@ -149,7 +150,6 @@ namespace Sudoku
             }
             return line + "|\n" + MakeLine(squareWidth);
         }
-
 
         public string MakeSquare(int number)
         {

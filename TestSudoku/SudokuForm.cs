@@ -24,12 +24,7 @@ namespace Sudoku
             InitializeComponent();
             game = theGame;
             controller = theGameController;
-            sudokuPanel = new Panel
-            {
-                Location = new Point(10, 10),
-                Size = new Size(game.gridHeight * 50, game.gridWidth * 50),
-                BorderStyle = BorderStyle.Fixed3D
-            };
+            sudokuPanel = controller.MakeSudokuPanel();
             Controls.Add(sudokuPanel);
             game.StartTimer();
 
@@ -220,7 +215,7 @@ namespace Sudoku
 
         private void button3_Click(object sender, EventArgs e)
         {
-            controller.SaveAndQuit();
+            controller.SaveAndQuit(null);
         }
 
         private void restartButton_Click(object sender, EventArgs e)

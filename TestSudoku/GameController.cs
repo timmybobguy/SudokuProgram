@@ -71,11 +71,15 @@ namespace Sudoku
             {
                 int[] grid = game.CreateGridBlank(x, y);
                 game.Set(grid);
+                editorForm.Initialise(game, this, x, y, true);
+                editorForm.GenerateGrid();
                 editorForm.ShowDialog();
             }
             else
             {
                 game.FromCSV(file, false);
+                editorForm.Initialise(game, this, x, y, false);
+                editorForm.GenerateGrid();
                 editorForm.ShowDialog();
             }
             
@@ -105,11 +109,32 @@ namespace Sudoku
             return btnNew;
         }
 
-        public void SaveAndQuit()
+        public Panel MakeSudokuPanel ()
         {
-            game.StopTimer();
-            game.ToCSV(currentFileName);
-            sudokuForm.Close();
+            Panel sudokuPanel = new Panel
+            {
+                Location = new Point(10, 10),
+                Size = new Size(game.gridHeight * 50, game.gridWidth * 50),
+                BorderStyle = BorderStyle.Fixed3D
+            };
+
+            return sudokuPanel;
+        }
+
+        public void SaveAndQuit(string newFileName)
+        {
+            if (newFileName != null)
+            {
+                game.ToCSV(newFileName);
+                editorForm.Close();
+            }
+            else
+            {
+                game.StopTimer();
+                game.ToCSV(currentFileName);
+                sudokuForm.Close();
+            }
+            
         }
 
         public void RestartGame()
