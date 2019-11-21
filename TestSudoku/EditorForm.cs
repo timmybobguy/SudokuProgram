@@ -55,5 +55,10 @@ namespace Sudoku
         {
             controller.SaveAndQuit(inputText.Text);
         }
+
+        public void ExistingFile()
+        {
+            inputText.Text = "this file already exists";
+        }
     }
 }

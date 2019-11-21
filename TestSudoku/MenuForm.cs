@@ -14,7 +14,7 @@ namespace Sudoku
 {
     public partial class MenuForm : System.Windows.Forms.Form
     {
-        private string[] fileList;
+        public string[] fileList;
         private ListBox listBox;
         protected Game game;
         protected GameController controller;

@@ -125,8 +125,25 @@ namespace Sudoku
         {
             if (newFileName != null)
             {
-                game.ToCSV(newFileName);
-                editorForm.Close();
+                bool alreadyExists = false;
+                for (var i = 0; i < form.fileList.Length; i++)
+                {
+                    if (newFileName == form.fileList[i])
+                    {
+                        alreadyExists = true;
+                    }
+                }
+                if (alreadyExists == false)
+                {
+                    game.ToCSV(newFileName);
+                    editorForm.Close();
+                    form.UpdateListBox();
+                }
+                else
+                {
+                    editorForm.ExistingFile();
+                }
+                
             }
             else
             {
