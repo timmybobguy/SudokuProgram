@@ -66,6 +66,8 @@ namespace Sudoku
         {
             listBox.BeginUpdate();
             listBox.Items.Clear();
+            RefreshFileList();
+            FilterPaths();
             for (int x = 0; x < fileList.Length; x++)
             {
                 listBox.Items.Add(fileList[x]);
@@ -143,6 +145,18 @@ namespace Sudoku
             if (GetSelection() != "null")
             {
                 controller.StartEditor(0, 0, true, GetSelection());
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (GetSelection() != "null")
+            {
+                RefreshFileList();
+
+                File.Delete(fileList[listBox.SelectedIndex]);
+
+                UpdateListBox();
             }
         }
     }   

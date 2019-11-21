@@ -38,6 +38,7 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.editExistingButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -159,11 +160,22 @@
             this.editExistingButton.UseVisualStyleBackColor = true;
             this.editExistingButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(710, 77);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 8;
+            this.deleteButton.Text = "Delete game";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editExistingButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown2);
@@ -195,5 +207,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button editExistingButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
