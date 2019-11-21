@@ -61,7 +61,7 @@ namespace Sudoku
                 }
                 
             }
-            // Giving all of the textboxes the commmon event
+            // Giving all of the textboxes the commmon event + add the borders 
             foreach (Control ctrl in sudokuPanel.Controls)
             {
                 if ((ctrl as TextBox) != null)
@@ -69,20 +69,27 @@ namespace Sudoku
                     (ctrl as TextBox).TextChanged += CommonHandler_TextChanged;
                 }
 
-                    (ctrl as TextBox).Controls.Add(new Label()
-                    { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
+                string[] splitArray = (ctrl as TextBox).Name.Split('_');
+
+                int currentIndex = game.GetByColumn(int.Parse(splitArray[1]), int.Parse(splitArray[2]));
+
+                
+
+                if ( game.GetRowByIndex(currentIndex) % ((game.gridHeight / game.squareHeight) - 1) == 0) // it is on a row with a horizonal line, bottom
+                {
+                    (ctrl as TextBox).Controls.Add(new Label() { Height = 2, Dock = DockStyle.Bottom, BackColor = Color.Black });
+                }
+
+                if ( game.GetColumnByIndex(currentIndex) % (game.gridWidth / game.squareWidth) - 1 == 0)
+                {
+                    //(ctrl as TextBox).Controls.Add(new Label() { Width = 2, Dock = DockStyle.Right, BackColor = Color.Black });
+                }
+                
+
+
+
+                
             }
-            
-
-            for (var i = 0; i < game.numbersArray.Length; i++)
-            {
-                //if () //Check if cell is 
-                //{
-
-               // }
-            }
-
-
         }
 
         bool IsDigitsOnly(string str)
