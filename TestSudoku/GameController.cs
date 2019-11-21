@@ -94,6 +94,7 @@ namespace Sudoku
                 Width = 50,
                 Font = new Font("Arial", 20),
                 Text = value,
+                AutoSize = false,
                 Visible = true,
                 TextAlign = HorizontalAlignment.Center,
                 BorderStyle = BorderStyle.None

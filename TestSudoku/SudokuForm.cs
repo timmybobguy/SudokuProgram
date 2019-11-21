@@ -68,7 +68,21 @@ namespace Sudoku
                 {
                     (ctrl as TextBox).TextChanged += CommonHandler_TextChanged;
                 }
+
+                    (ctrl as TextBox).Controls.Add(new Label()
+                    { Height = 1, Dock = DockStyle.Bottom, BackColor = Color.Black });
             }
+            
+
+            for (var i = 0; i < game.numbersArray.Length; i++)
+            {
+                //if () //Check if cell is 
+                //{
+
+               // }
+            }
+
+
         }
 
         bool IsDigitsOnly(string str)
