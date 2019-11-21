@@ -164,8 +164,10 @@ namespace Sudoku
         {
             if (game.IsPuzzleValid())
             {
-                hintOutput.Text = "Complete...";
+                hintOutput.Text = "Complete..." + game.GetScore();
                 game.StopTimer();
+
+                
 
                 foreach (Control ctrl in sudokuPanel.Controls)
                 {
