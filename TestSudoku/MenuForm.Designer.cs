@@ -99,17 +99,17 @@
             // 
             // buttonStartEditor
             // 
-            this.buttonStartEditor.Location = new System.Drawing.Point(678, 358);
+            this.buttonStartEditor.Location = new System.Drawing.Point(678, 387);
             this.buttonStartEditor.Name = "buttonStartEditor";
             this.buttonStartEditor.Size = new System.Drawing.Size(75, 23);
             this.buttonStartEditor.TabIndex = 3;
-            this.buttonStartEditor.Text = "Start editor";
+            this.buttonStartEditor.Text = "Create new";
             this.buttonStartEditor.UseVisualStyleBackColor = true;
             this.buttonStartEditor.Click += new System.EventHandler(this.buttonStartEditor_Click);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(660, 395);
+            this.numericUpDown1.Location = new System.Drawing.Point(662, 361);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             2,
             0,
@@ -126,7 +126,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(737, 395);
+            this.numericUpDown2.Location = new System.Drawing.Point(739, 361);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             2,
             0,
@@ -144,7 +144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(707, 397);
+            this.label1.Location = new System.Drawing.Point(709, 363);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 6;

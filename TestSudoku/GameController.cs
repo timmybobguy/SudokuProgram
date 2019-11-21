@@ -169,5 +169,6 @@ namespace Sudoku
             sudokuForm.Initialise(game, this);
             sudokuForm.GenerateGrid(game.originalNumbersArray, game.lastSaveNumbersArray);
         }
+
     }
 }

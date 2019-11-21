@@ -75,33 +75,19 @@ namespace Sudoku
 
                 
 
-                if ( game.GetRowByIndex(currentIndex) % ((game.gridHeight / game.squareHeight) - 1) == 0) // it is on a row with a horizonal line, bottom
+                if ( (game.GetRowByIndex(currentIndex) + 1) % (game.gridHeight / game.squareHeight) == 0) // it is on a row with a horizonal line, bottom
                 {
                     (ctrl as TextBox).Controls.Add(new Label() { Height = 2, Dock = DockStyle.Bottom, BackColor = Color.Black });
                 }
 
-                if ( game.GetColumnByIndex(currentIndex) % (game.gridWidth / game.squareWidth) - 1 == 0)
+                if ( (game.GetColumnByIndex(currentIndex) + 1) % (game.gridWidth / game.squareWidth) - 1 == 0 && game.GetColumnByIndex(currentIndex) != 0 )
                 {
-                    //(ctrl as TextBox).Controls.Add(new Label() { Width = 2, Dock = DockStyle.Right, BackColor = Color.Black });
-                }
-                
-
-
-
-                
+                    (ctrl as TextBox).Controls.Add(new Label() { Width = 2, Dock = DockStyle.Left, BackColor = Color.Black });
+                }  
             }
         }
 
-        bool IsDigitsOnly(string str)
-        {
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-
-            return true;
-        }
+        
 
         private async void ShowIncorrectInput(Control currentCell)
         {
@@ -121,7 +107,7 @@ namespace Sudoku
             {
                 if (currentCell.Text != "")
                 {
-                    if (!IsDigitsOnly(currentCell.Text))
+                    if (!game.IsDigitsOnly(currentCell.Text))
                     {
                         ShowIncorrectInput(currentCell);
                     }
