@@ -151,7 +151,7 @@ namespace Sudoku
                         alreadyExists = true;
                     }
                 }
-                if (alreadyExists == false)
+                if (alreadyExists == false && newFileName != "")
                 {
                     game.originalNumbersArray = game.numbersArray;
                     game.lastSaveNumbersArray = game.numbersArray;
@@ -161,7 +161,7 @@ namespace Sudoku
                 }
                 else
                 {
-                    editorForm.ExistingFile();
+                    editorForm.FileNameError();
                 }
                 
             }

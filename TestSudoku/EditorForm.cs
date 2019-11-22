@@ -128,9 +128,9 @@ namespace Sudoku
             
         }
 
-        public void ExistingFile()
+        public void FileNameError()
         {
-            inputText.Text = "this file already exists";
+            inputText.Text = "this name already exists or is blank";
         }
 
         private void saveExisting_Click(object sender, EventArgs e)
