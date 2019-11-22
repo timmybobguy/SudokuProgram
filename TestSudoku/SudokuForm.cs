@@ -102,6 +102,7 @@ namespace Sudoku
         private void CommonHandler_TextChanged(object sender, EventArgs e)
         {
             Control currentCell = sudokuPanel.Controls.Find((sender as TextBox).Name, true)[0];
+            string[] splitArray = (sender as TextBox).Name.Split('_');
 
             if (beingWiped != currentCell)
             {
@@ -117,12 +118,15 @@ namespace Sudoku
                     }
                     else
                     {
-                        string[] splitArray = (sender as TextBox).Name.Split('_');
                         game.SetByColumn(int.Parse(currentCell.Text), int.Parse(splitArray[1]), int.Parse(splitArray[2]));
                         CheckHighlighting(game.GetByColumn(int.Parse(splitArray[1]), int.Parse(splitArray[2])));
                         IsPuzzleFinished();
                         
                     }
+                }
+                else
+                {
+                    CheckHighlighting(game.GetByColumn(int.Parse(splitArray[1]), int.Parse(splitArray[2])));
                 }
             }
         }
@@ -133,31 +137,42 @@ namespace Sudoku
             {
                 for (var i = 0; i < game.gridWidth; i++)
                 {
-                    sudokuPanel.Controls.Find("sudoku_" + i + "_" + game.GetRowByIndex(index), true)[0].ForeColor = Color.Green;
+                    Control current = sudokuPanel.Controls.Find("sudoku_" + i + "_" + game.GetRowByIndex(index), true)[0];
+
+                    current.ForeColor = Color.Green;
+                    // Work in progress 
+                    current.Enabled = false;
                 }
 
                 hintOutput.Text = "row valid";
             }
+            
             if (game.ColumnValid(game.GetColumnByIndex(index)))
             {
                 for (var i = 0; i < game.gridHeight; i++)
                 {
-                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(index) + "_" + i, true)[0].ForeColor = Color.Green;
+                    Control current = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(index) + "_" + i, true)[0];
+                    current.ForeColor = Color.Green;
+                    current.Enabled = false;
                 }
 
                 hintOutput.Text = "column valid";
             }
+            
             if (game.SquareValid(game.GetSquareFromIndex(index)))
             {
                 int square = game.GetSquareFromIndex(index);
 
                 for (var i = 0; i < game.numberOfSquares; i++)
                 {
-                    sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(game.GetBySquare(square, i)) + "_" + game.GetRowByIndex(game.GetBySquare(square, i)), true)[0].ForeColor = Color.Green;
+                    Control current = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(game.GetBySquare(square, i)) + "_" + game.GetRowByIndex(game.GetBySquare(square, i)), true)[0];
+                    current.ForeColor = Color.Green;
+                    current.Enabled = false;
                 }
 
                 hintOutput.Text = "square valid";
             }
+            
         }
 
         private void IsPuzzleFinished()
