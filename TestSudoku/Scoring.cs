@@ -28,7 +28,7 @@ namespace Sudoku
                     gridScore++;
                 }
             }
-            gridScore = gridScore / originalNumbersArray.Length;
+            gridScore = originalNumbersArray.Length / gridScore;
             return (TimeScore * gridScore) - (hintsUsed * 10);
         }
 
@@ -60,8 +60,7 @@ namespace Sudoku
         {
             if (GetScore() > highScore)
             {
-                highScore = GetScore();
-                
+                highScore = GetScore();  
             }
         }
 

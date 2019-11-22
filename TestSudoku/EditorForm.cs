@@ -115,7 +115,11 @@ namespace Sudoku
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            controller.SaveAndQuit(inputText.Text);
+            if (game.IsPuzzleValidForSaving())
+            {
+                controller.SaveAndQuit(inputText.Text);
+            }
+            
         }
 
         public void ExistingFile()
@@ -125,7 +129,7 @@ namespace Sudoku
 
         private void saveExisting_Click(object sender, EventArgs e)
         {
-            if (isNewGame == false)
+            if (isNewGame == false && game.IsPuzzleValidForSaving())
             {
                 controller.SaveAndQuit(null);
             }

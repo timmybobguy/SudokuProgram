@@ -165,9 +165,8 @@ namespace Sudoku
             if (game.IsPuzzleValid())
             {
                 hintOutput.Text = "Complete..." + game.GetScore();
+                game.SetHighScore();
                 game.StopTimer();
-
-                
 
                 foreach (Control ctrl in sudokuPanel.Controls)
                 {
@@ -176,6 +175,9 @@ namespace Sudoku
                         (ctrl as TextBox).Enabled = false;
                     }
                 }
+
+                
+
             }
             else if (Array.Exists(game.numbersArray, element => element == 0) != true)
             {
