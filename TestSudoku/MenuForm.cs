@@ -54,8 +54,8 @@ namespace Sudoku
 
             //Creating listbox
             listBox = new ListBox();
-            listBox.Size = new Size(600, 200);
-            listBox.Location = new Point(10, 10);
+            listBox.Size = new Size(400, 200);
+            listBox.Location = new Point(10, 80);
 
             Controls.Add(listBox);
             //this initially updates the list box
@@ -118,21 +118,25 @@ namespace Sudoku
             UpdateListBox();
         }
 
-        private void loadButton_Click(object sender, EventArgs e) //For testing this is just getting the selected item and the selected option
+        private void loadButton_Click(object sender, EventArgs e)
         {
             bool? option = GetOption();
             bool options = false;
 
-            if (option == null || GetSelection() == "")
-            {
-                //Do error message/thingy
-            }
-            else if (option == true)
+            if (option == true)
             {
                 options = true;
             }
 
-            controller.StartSudoku(GetSelection(), options);
+            if (option == null || GetSelection() == "null")
+            {
+                //Do error message/thingy
+
+            }
+            else
+            {
+                controller.StartSudoku(GetSelection(), options);
+            }
         }
 
         private void buttonStartEditor_Click(object sender, EventArgs e)

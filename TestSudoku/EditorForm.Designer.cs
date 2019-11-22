@@ -61,7 +61,7 @@
             // saveExisting
             // 
             this.saveExisting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveExisting.Location = new System.Drawing.Point(176, 12);
+            this.saveExisting.Location = new System.Drawing.Point(182, 145);
             this.saveExisting.Name = "saveExisting";
             this.saveExisting.Size = new System.Drawing.Size(118, 23);
             this.saveExisting.TabIndex = 2;
@@ -90,6 +90,11 @@
             // targetTimeInput
             // 
             this.targetTimeInput.Location = new System.Drawing.Point(92, 25);
+            this.targetTimeInput.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.targetTimeInput.Name = "targetTimeInput";
             this.targetTimeInput.Size = new System.Drawing.Size(120, 20);
             this.targetTimeInput.TabIndex = 5;
@@ -97,6 +102,11 @@
             // baseScoreInput
             // 
             this.baseScoreInput.Location = new System.Drawing.Point(92, 57);
+            this.baseScoreInput.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.baseScoreInput.Name = "baseScoreInput";
             this.baseScoreInput.Size = new System.Drawing.Size(120, 20);
             this.baseScoreInput.TabIndex = 6;
@@ -104,6 +114,7 @@
             // newGroupBox
             // 
             this.newGroupBox.Controls.Add(this.submitButton);
+            this.newGroupBox.Controls.Add(this.saveExisting);
             this.newGroupBox.Controls.Add(this.baseScoreInput);
             this.newGroupBox.Controls.Add(this.inputText);
             this.newGroupBox.Controls.Add(this.targetTimeInput);
@@ -123,7 +134,6 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(306, 317);
             this.Controls.Add(this.newGroupBox);
-            this.Controls.Add(this.saveExisting);
             this.Name = "EditorForm";
             this.Text = "EditorForm";
             ((System.ComponentModel.ISupportInitialize)(this.targetTimeInput)).EndInit();

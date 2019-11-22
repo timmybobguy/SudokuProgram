@@ -97,7 +97,7 @@ namespace Sudoku
                 AutoSize = false,
                 Visible = true,
                 TextAlign = HorizontalAlignment.Center,
-                BorderStyle = BorderStyle.None,
+                BorderStyle = BorderStyle.FixedSingle,
                 Location = new Point(50 * column, 50 * row)
             };
 
@@ -113,7 +113,7 @@ namespace Sudoku
                     AutoSize = false,
                     Visible = true,
                     TextAlign = HorizontalAlignment.Center,
-                    BorderStyle = BorderStyle.None,
+                    BorderStyle = BorderStyle.FixedSingle,
                     ReadOnly = false,
                     TabStop = false,
                     BackColor = Color.White,

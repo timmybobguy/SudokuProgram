@@ -39,14 +39,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.editExistingButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(710, 33);
+            this.refreshButton.Location = new System.Drawing.Point(476, 88);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(75, 23);
             this.refreshButton.TabIndex = 0;
@@ -89,7 +93,7 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(234, 358);
+            this.loadButton.Location = new System.Drawing.Point(240, 379);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(75, 23);
             this.loadButton.TabIndex = 2;
@@ -99,17 +103,17 @@
             // 
             // buttonStartEditor
             // 
-            this.buttonStartEditor.Location = new System.Drawing.Point(678, 391);
+            this.buttonStartEditor.Location = new System.Drawing.Point(48, 75);
             this.buttonStartEditor.Name = "buttonStartEditor";
-            this.buttonStartEditor.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartEditor.Size = new System.Drawing.Size(110, 23);
             this.buttonStartEditor.TabIndex = 3;
-            this.buttonStartEditor.Text = "Create new";
+            this.buttonStartEditor.Text = "Create new puzzle";
             this.buttonStartEditor.UseVisualStyleBackColor = true;
             this.buttonStartEditor.Click += new System.EventHandler(this.buttonStartEditor_Click);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(662, 361);
+            this.numericUpDown1.Location = new System.Drawing.Point(50, 49);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             2,
             0,
@@ -126,7 +130,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(739, 361);
+            this.numericUpDown2.Location = new System.Drawing.Point(127, 49);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             2,
             0,
@@ -144,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(709, 363);
+            this.label1.Location = new System.Drawing.Point(97, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 6;
@@ -152,7 +156,7 @@
             // 
             // editExistingButton
             // 
-            this.editExistingButton.Location = new System.Drawing.Point(678, 329);
+            this.editExistingButton.Location = new System.Drawing.Point(66, 20);
             this.editExistingButton.Name = "editExistingButton";
             this.editExistingButton.Size = new System.Drawing.Size(75, 23);
             this.editExistingButton.TabIndex = 7;
@@ -162,7 +166,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(710, 77);
+            this.deleteButton.Location = new System.Drawing.Point(476, 132);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 8;
@@ -170,26 +174,60 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(8, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(152, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Welcome to Sudoku";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(246, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Please select a game from the list and then hit start";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.editExistingButton);
+            this.groupBox2.Controls.Add(this.buttonStartEditor);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.numericUpDown2);
+            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Location = new System.Drawing.Point(393, 338);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(192, 100);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Game editor";
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(597, 450);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.editExistingButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.buttonStartEditor);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.refreshButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MenuForm";
-            this.Text = "MenuForm";
+            this.Text = "Sudoku";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +246,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button editExistingButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

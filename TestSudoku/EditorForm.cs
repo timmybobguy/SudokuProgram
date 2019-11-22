@@ -44,8 +44,11 @@ namespace Sudoku
             }
             else
             {
+                targetTimeInput.Value = game.targetTime;
+                baseScoreInput.Value = game.baseScore;
                 saveExisting.Dock = DockStyle.Bottom;
-                newGroupBox.Visible = false;
+                inputText.Visible = false;
+                submitButton.Visible = false;
             }
 
             controller = theGameController;
@@ -77,12 +80,12 @@ namespace Sudoku
 
                 if ((game.GetRowByIndex(currentIndex) + 1) % (game.gridHeight / game.squareHeight) == 0) // it is on a row with a horizonal line, bottom
                 {
-                    (ctrl as TextBox).Controls.Add(new Label() { Height = 2, Dock = DockStyle.Bottom, BackColor = Color.Black });
+                    (ctrl as TextBox).Controls.Add(new Label() { Height = 3, Dock = DockStyle.Bottom, BackColor = Color.Black });
                 }
 
                 if ((game.GetColumnByIndex(currentIndex) + 1) % (game.gridWidth / game.squareWidth) - 1 == 0 && game.GetColumnByIndex(currentIndex) != 0)
                 {
-                    (ctrl as TextBox).Controls.Add(new Label() { Width = 2, Dock = DockStyle.Left, BackColor = Color.Black });
+                    (ctrl as TextBox).Controls.Add(new Label() { Width = 3, Dock = DockStyle.Left, BackColor = Color.Black });
                 }
             }
         }

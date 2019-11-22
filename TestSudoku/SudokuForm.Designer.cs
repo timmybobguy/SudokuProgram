@@ -48,9 +48,9 @@
             // 
             // hintOutput
             // 
-            this.hintOutput.Location = new System.Drawing.Point(628, 41);
+            this.hintOutput.Location = new System.Drawing.Point(561, 41);
             this.hintOutput.Name = "hintOutput";
-            this.hintOutput.Size = new System.Drawing.Size(160, 20);
+            this.hintOutput.Size = new System.Drawing.Size(227, 20);
             this.hintOutput.TabIndex = 1;
             // 
             // timerLabel
@@ -85,7 +85,7 @@
             // numWrong
             // 
             this.numWrong.AutoSize = true;
-            this.numWrong.Location = new System.Drawing.Point(708, 64);
+            this.numWrong.Location = new System.Drawing.Point(698, 64);
             this.numWrong.Name = "numWrong";
             this.numWrong.Size = new System.Drawing.Size(59, 13);
             this.numWrong.TabIndex = 6;

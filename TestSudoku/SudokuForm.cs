@@ -77,12 +77,12 @@ namespace Sudoku
 
                 if ( (game.GetRowByIndex(currentIndex) + 1) % (game.gridHeight / game.squareHeight) == 0) // it is on a row with a horizonal line, bottom
                 {
-                    (ctrl as TextBox).Controls.Add(new Label() { Height = 2, Dock = DockStyle.Bottom, BackColor = Color.Black });
+                    (ctrl as TextBox).Controls.Add(new Label() { Height = 3, Dock = DockStyle.Bottom, BackColor = Color.Black });
                 }
 
                 if ( (game.GetColumnByIndex(currentIndex) + 1) % (game.gridWidth / game.squareWidth) - 1 == 0 && game.GetColumnByIndex(currentIndex) != 0 )
                 {
-                    (ctrl as TextBox).Controls.Add(new Label() { Width = 2, Dock = DockStyle.Left, BackColor = Color.Black });
+                    (ctrl as TextBox).Controls.Add(new Label() { Width = 3, Dock = DockStyle.Left, BackColor = Color.Black });
                 }  
             }
         }
@@ -141,7 +141,7 @@ namespace Sudoku
 
                     current.ForeColor = Color.Green;
                     // Work in progress 
-                    current.Enabled = false;
+                    //current.Enabled = false;
                 }
 
                 hintOutput.Text = "row valid";
@@ -153,7 +153,7 @@ namespace Sudoku
                 {
                     Control current = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(index) + "_" + i, true)[0];
                     current.ForeColor = Color.Green;
-                    current.Enabled = false;
+                    //current.Enabled = false;
                 }
 
                 hintOutput.Text = "column valid";
@@ -167,7 +167,7 @@ namespace Sudoku
                 {
                     Control current = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(game.GetBySquare(square, i)) + "_" + game.GetRowByIndex(game.GetBySquare(square, i)), true)[0];
                     current.ForeColor = Color.Green;
-                    current.Enabled = false;
+                    //current.Enabled = false;
                 }
 
                 hintOutput.Text = "square valid";
@@ -179,7 +179,7 @@ namespace Sudoku
         {
             if (game.IsPuzzleValid())
             {
-                hintOutput.Text = "Complete. with a score of " + game.GetScore() + " and in a time of " + game.timeTaken + " seconds";
+                hintOutput.Text = "Complete. with a score of " + game.GetScore() + " and in a time of " + game.timeTaken + " seconds. The highscore for this game is " + game.highScore;
                 game.SetHighScore();
                 game.StopTimer();
 
