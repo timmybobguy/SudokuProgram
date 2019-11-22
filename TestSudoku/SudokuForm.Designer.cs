@@ -48,9 +48,9 @@
             // 
             // hintOutput
             // 
-            this.hintOutput.Location = new System.Drawing.Point(688, 41);
+            this.hintOutput.Location = new System.Drawing.Point(628, 41);
             this.hintOutput.Name = "hintOutput";
-            this.hintOutput.Size = new System.Drawing.Size(100, 20);
+            this.hintOutput.Size = new System.Drawing.Size(160, 20);
             this.hintOutput.TabIndex = 1;
             // 
             // timerLabel

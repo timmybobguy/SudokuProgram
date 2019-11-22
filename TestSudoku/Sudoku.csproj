@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleView.cs" />
+    <Compile Include="DisabledTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Editor.cs" />
     <Compile Include="EditorForm.cs">
       <SubType>Form</SubType>

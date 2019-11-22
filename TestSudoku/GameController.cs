@@ -97,15 +97,32 @@ namespace Sudoku
                 AutoSize = false,
                 Visible = true,
                 TextAlign = HorizontalAlignment.Center,
-                BorderStyle = BorderStyle.None
+                BorderStyle = BorderStyle.None,
+                Location = new Point(50 * column, 50 * row)
             };
 
             if (locked == true)
             {
-                btnNew.ReadOnly = true;
-                btnNew.Enabled = false;
+                DisabledTextBox btnDisabled = new DisabledTextBox
+                {
+                    Name = name + column.ToString() + "_" + row.ToString(),
+                    Height = 50,
+                    Width = 50,
+                    Font = new Font("Arial", 20),
+                    Text = value,
+                    AutoSize = false,
+                    Visible = true,
+                    TextAlign = HorizontalAlignment.Center,
+                    BorderStyle = BorderStyle.None,
+                    ReadOnly = false,
+                    TabStop = false,
+                    BackColor = Color.White,
+                    ForeColor = Color.Black,
+                    Location = new Point(50 * column, 50 * row)
+                };
+
+                return btnDisabled;
             }
-            btnNew.Location = new Point(50 * column, 50 * row);
 
             return btnNew;
         }

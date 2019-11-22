@@ -72,13 +72,13 @@
             this.radioButtonSave.Name = "radioButtonSave";
             this.radioButtonSave.Size = new System.Drawing.Size(75, 17);
             this.radioButtonSave.TabIndex = 1;
-            this.radioButtonSave.TabStop = true;
             this.radioButtonSave.Text = "Load save";
             this.radioButtonSave.UseVisualStyleBackColor = true;
             // 
             // radioButtonNew
             // 
             this.radioButtonNew.AutoSize = true;
+            this.radioButtonNew.Checked = true;
             this.radioButtonNew.Location = new System.Drawing.Point(7, 20);
             this.radioButtonNew.Name = "radioButtonNew";
             this.radioButtonNew.Size = new System.Drawing.Size(101, 17);

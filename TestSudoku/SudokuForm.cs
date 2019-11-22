@@ -164,7 +164,7 @@ namespace Sudoku
         {
             if (game.IsPuzzleValid())
             {
-                hintOutput.Text = "Complete..." + game.GetScore();
+                hintOutput.Text = "Complete. with a score of " + game.GetScore() + " and in a time of " + game.timeTaken + " seconds";
                 game.SetHighScore();
                 game.StopTimer();
 
