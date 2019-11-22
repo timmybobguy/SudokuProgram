@@ -117,7 +117,7 @@ namespace Sudoku
                     ReadOnly = false,
                     TabStop = false,
                     BackColor = Color.White,
-                    ForeColor = Color.Black,
+                    ForeColor = Color.SlateGray,
                     Location = new Point(50 * column, 50 * row)
                 };
 
