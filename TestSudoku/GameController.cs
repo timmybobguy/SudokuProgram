@@ -133,7 +133,8 @@ namespace Sudoku
             {
                 Location = new Point(10, 10),
                 Size = new Size(game.gridHeight * 50, game.gridWidth * 50),
-                BorderStyle = BorderStyle.Fixed3D
+                BorderStyle = BorderStyle.Fixed3D,
+                Anchor = (AnchorStyles.Left | AnchorStyles.Top)
             };
 
             return sudokuPanel;

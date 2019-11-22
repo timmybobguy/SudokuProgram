@@ -21,7 +21,9 @@ namespace Sudoku
         public void Initialise(Game theGame, GameController theGameController, int x, int y, bool newGame)
         {
             Controls.Clear();
+            
             InitializeComponent();
+            
             game = theGame;
             isNewGame = newGame;
 
@@ -42,14 +44,15 @@ namespace Sudoku
             }
             else
             {
-                inputText.Visible = false;
-                submitButton.Visible = false;
+                saveExisting.Dock = DockStyle.Bottom;
+                newGroupBox.Visible = false;
             }
 
             controller = theGameController;
             sudokuPanel = controller.MakeSudokuPanel();
             Controls.Add(sudokuPanel);
-            
+
+            Size = new Size(Size.Width, sudokuPanel.Size.Height + 260);
         }
 
         public void GenerateGrid()
