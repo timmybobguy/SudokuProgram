@@ -38,6 +38,12 @@ namespace Sudoku
                     BaseScore = 0
                 };
                 game.SetSettings(blank);
+                saveExisting.Visible = false;
+            }
+            else
+            {
+                inputText.Visible = false;
+                submitButton.Visible = false;
             }
 
             controller = theGameController;
@@ -117,7 +123,7 @@ namespace Sudoku
         {
             if (game.IsPuzzleValidForSaving())
             {
-                controller.SaveAndQuit(inputText.Text);
+                controller.SaveAndQuit(inputText.Text, false);
             }
             
         }
@@ -131,11 +137,7 @@ namespace Sudoku
         {
             if (isNewGame == false && game.IsPuzzleValidForSaving())
             {
-                controller.SaveAndQuit(null);
-            }
-            else
-            {
-                inputText.Text = "This is a new file, it needs a name";
+                controller.SaveAndQuit(null, true);
             }
         }
     }

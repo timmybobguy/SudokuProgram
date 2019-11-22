@@ -139,7 +139,7 @@ namespace Sudoku
             return sudokuPanel;
         }
 
-        public void SaveAndQuit(string newFileName)
+        public void SaveAndQuit(string newFileName, bool existingSave)
         {
             if (newFileName != null)
             {
@@ -164,6 +164,13 @@ namespace Sudoku
                     editorForm.ExistingFile();
                 }
                 
+            }
+            else if (existingSave == true)
+            {
+                game.originalNumbersArray = game.numbersArray;
+                game.lastSaveNumbersArray = game.numbersArray;
+                game.ToCSV(form.listBox.SelectedItem.ToString());
+                editorForm.Close();
             }
             else
             {

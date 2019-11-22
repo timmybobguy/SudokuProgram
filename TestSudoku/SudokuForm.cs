@@ -240,7 +240,7 @@ namespace Sudoku
 
         private void button3_Click(object sender, EventArgs e)
         {
-            controller.SaveAndQuit(null);
+            controller.SaveAndQuit(null, false);
         }
 
         private void restartButton_Click(object sender, EventArgs e)
