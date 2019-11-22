@@ -126,6 +126,8 @@ namespace Sudoku
         {
             if (game.IsPuzzleValidForSaving())
             {
+                game.targetTime = decimal.ToInt32(targetTimeInput.Value);
+                game.baseScore = decimal.ToInt32(baseScoreInput.Value);
                 controller.SaveAndQuit(inputText.Text, false);
             }
             

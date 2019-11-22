@@ -33,11 +33,11 @@
             this.saveExisting = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.targetTime = new System.Windows.Forms.NumericUpDown();
-            this.baseScore = new System.Windows.Forms.NumericUpDown();
+            this.targetTimeInput = new System.Windows.Forms.NumericUpDown();
+            this.baseScoreInput = new System.Windows.Forms.NumericUpDown();
             this.newGroupBox = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.targetTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.baseScore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetTimeInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseScoreInput)).BeginInit();
             this.newGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,26 +87,26 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Base score:";
             // 
-            // targetTime
+            // targetTimeInput
             // 
-            this.targetTime.Location = new System.Drawing.Point(92, 25);
-            this.targetTime.Name = "targetTime";
-            this.targetTime.Size = new System.Drawing.Size(120, 20);
-            this.targetTime.TabIndex = 5;
+            this.targetTimeInput.Location = new System.Drawing.Point(92, 25);
+            this.targetTimeInput.Name = "targetTimeInput";
+            this.targetTimeInput.Size = new System.Drawing.Size(120, 20);
+            this.targetTimeInput.TabIndex = 5;
             // 
-            // baseScore
+            // baseScoreInput
             // 
-            this.baseScore.Location = new System.Drawing.Point(92, 57);
-            this.baseScore.Name = "baseScore";
-            this.baseScore.Size = new System.Drawing.Size(120, 20);
-            this.baseScore.TabIndex = 6;
+            this.baseScoreInput.Location = new System.Drawing.Point(92, 57);
+            this.baseScoreInput.Name = "baseScoreInput";
+            this.baseScoreInput.Size = new System.Drawing.Size(120, 20);
+            this.baseScoreInput.TabIndex = 6;
             // 
             // newGroupBox
             // 
             this.newGroupBox.Controls.Add(this.submitButton);
-            this.newGroupBox.Controls.Add(this.baseScore);
+            this.newGroupBox.Controls.Add(this.baseScoreInput);
             this.newGroupBox.Controls.Add(this.inputText);
-            this.newGroupBox.Controls.Add(this.targetTime);
+            this.newGroupBox.Controls.Add(this.targetTimeInput);
             this.newGroupBox.Controls.Add(this.label1);
             this.newGroupBox.Controls.Add(this.label2);
             this.newGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -126,8 +126,8 @@
             this.Controls.Add(this.saveExisting);
             this.Name = "EditorForm";
             this.Text = "EditorForm";
-            ((System.ComponentModel.ISupportInitialize)(this.targetTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.baseScore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetTimeInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseScoreInput)).EndInit();
             this.newGroupBox.ResumeLayout(false);
             this.newGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -141,8 +141,8 @@
         private System.Windows.Forms.Button saveExisting;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown targetTime;
-        private System.Windows.Forms.NumericUpDown baseScore;
+        private System.Windows.Forms.NumericUpDown targetTimeInput;
+        private System.Windows.Forms.NumericUpDown baseScoreInput;
         private System.Windows.Forms.GroupBox newGroupBox;
     }
 }
