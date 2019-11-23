@@ -112,7 +112,7 @@ namespace Sudoku
                     {
                         ShowIncorrectInput(currentCell);
                     }
-                    else if (int.Parse(currentCell.Text) > game.numberOfSquares || int.Parse(currentCell.Text) == 0)
+                    else if (int.Parse(currentCell.Text) > game.numberOfSquares)
                     {
                         ShowIncorrectInput(currentCell);
                     }
@@ -127,12 +127,12 @@ namespace Sudoku
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            if (game.IsPuzzleValidForSaving())
-            {
+            //if (game.IsPuzzleValidForSaving()) // This is doing something wrong
+            //{
                 game.targetTime = decimal.ToInt32(targetTimeInput.Value);
                 game.baseScore = decimal.ToInt32(baseScoreInput.Value);
                 controller.SaveAndQuit(inputText.Text, false);
-            }
+            //}
             
         }
 
