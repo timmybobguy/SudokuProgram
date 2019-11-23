@@ -26,6 +26,8 @@ namespace Sudoku
             controller = theGameController;
             sudokuPanel = controller.MakeSudokuPanel();
             Controls.Add(sudokuPanel);
+            Size = new Size(Size.Width, sudokuPanel.Size.Height + 260);
+            numWrong.Visible = false;
             game.StartTimer();
 
             //Timer
@@ -198,6 +200,7 @@ namespace Sudoku
             {
                 int wrongNum = game.NumberOfIncorrectSquares();
                 numWrong.Text = wrongNum.ToString() + " cell/s are still incorrect";
+                numWrong.Visible = true;
             }
         }
 
