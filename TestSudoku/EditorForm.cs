@@ -127,12 +127,12 @@ namespace Sudoku
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            //if (game.IsPuzzleValidForSaving()) // This is doing something wrong
-            //{
+            if (game.IsPuzzleValidForSaving())
+            {
                 game.targetTime = decimal.ToInt32(targetTimeInput.Value);
                 game.baseScore = decimal.ToInt32(baseScoreInput.Value);
                 controller.SaveAndQuit(inputText.Text, false);
-            //}
+            }
             
         }
 
