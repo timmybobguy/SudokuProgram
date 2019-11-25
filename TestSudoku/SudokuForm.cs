@@ -213,18 +213,10 @@ namespace Sudoku
                 Control lastHint = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(lastHintIndex) + "_" + game.GetRowByIndex(lastHintIndex), true)[0];
                 lastHint.BackColor = Color.White;
             }
-           
 
             int[] hintArray = game.GetHint();
-
-            //txtName.BackColor = Color.Aqua;
-
-
             Control hintTextBox = sudokuPanel.Controls.Find("sudoku_" + game.GetColumnByIndex(hintArray[0]) + "_" + game.GetRowByIndex(hintArray[0]), true)[0];
-            //Button b = c as Button;
 
-            // c.Text = "@";
-            
 
             string output = "";
             for (var i = 1; i < hintArray.Length; i++)

@@ -31,26 +31,10 @@ namespace Sudoku
         {
             form.Initialise(game, this);
             Application.Run(form);
-            
-            //view.Start();
-            ////game.ToCSV();
-            //view.Show(game.FromCSV("3X3Blank", false));
-            //game.StartTimer();
-            //view.Show(game.ToPrettyString());
-            //game.ToCSV();
-            
-            ////form.Show();
-
-            //form.Initialise(game);
-
-            ////form.GenerateGrid(game.numbersArray);
-
-            ////view.Stop();
         }
 
         public void StartSudoku(string selection, bool options)
         {
-            // Make the controller create a new instance of the model each time a game is loaded
             currentFileName = selection;
             game = new Game();
             game.FromCSV(selection, options);
@@ -187,7 +171,6 @@ namespace Sudoku
             game.StopTimer();
             game.lastSaveNumbersArray = game.originalNumbersArray;
             game.numbersArray = game.originalNumbersArray;
-            //game.Restart();
             game.timeTaken = 0;
             game.ToCSV(currentFileName);
 
